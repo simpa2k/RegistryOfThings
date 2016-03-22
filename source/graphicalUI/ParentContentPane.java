@@ -40,6 +40,8 @@ public class ParentContentPane extends JPanel implements ActionListener {
 		populateMiddleRow();
 		populateBottomRow();
 
+		setPreferredSize(new Dimension(500, 500));
+
 	}
 
 	private void setColumnAndRow(int x, int y) {
@@ -87,9 +89,9 @@ public class ParentContentPane extends JPanel implements ActionListener {
 	private void populateMiddleRow() {
 
 		setColumnAndRow(0, 1);
-		textArea = new JTextArea(6, 15);
+		textArea = new JTextArea();
 		JScrollPane scrollPane = new JScrollPane(textArea);
-
+		scrollPane.setPreferredSize(new Dimension(400, 300));
 		add(scrollPane, c);
 
 		addRadioButtons();
@@ -121,21 +123,55 @@ public class ParentContentPane extends JPanel implements ActionListener {
 
 	}
 
-	private void displayDialog(JOptionPane optionPane) {
+	private void getNewValuable(ValuableDialog valuableDialog) {
 
-		JDialog dialog = new JDialog(parentFrame);
+		Valuable newValuable = valuableDialog.getNewValuable();
 
-		dialog.add(optionPane);
-		dialog.pack();
-		dialog.setVisible(true);
+		if(newValuable == null) {
+
+			JOptionPane.showMessageDialog(valuableDialog,
+										  "Fel inmatning!",
+										  "Fel!",
+										  JOptionPane.ERROR_MESSAGE);
+
+		} else {
+
+			System.out.println(newValuable);
+
+		}
 
 	}
 
-	private void displayValuableDialog(JPanel valuableDialog) {
+	private void displayValuableDialog(ValuableDialog valuableDialog, String typOfValuable) {
 
-		JOptionPane optionPane = new JOptionPane(valuableDialog, JOptionPane.QUESTION_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
+		int okOrCancel = JOptionPane.showOptionDialog(this, 
+									 valuableDialog, 
+									 "Add " + typOfValuable, 
+									 JOptionPane.OK_CANCEL_OPTION, 
+									 JOptionPane.QUESTION_MESSAGE, 
+									 null, null, null);
 
-		displayDialog(optionPane);
+		if(okOrCancel == 0) {
+
+			getNewValuable(valuableDialog);
+
+		}
+
+		/*JOptionPane newValuableOptionPane = new JOptionPane(valuableDialog, JOptionPane.QUESTION_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
+
+		JDialog dialog = newValuableOptionPane.createDialog(this, "Add " + typOfValuable);
+		dialog.show();
+
+		if(newValuableOptionPane.getValue() == null) {
+
+			return;
+
+		} else {
+
+			getNewValuable(valuableDialog);
+
+		}*/
+		
 
 	}
 
@@ -150,13 +186,13 @@ public class ParentContentPane extends JPanel implements ActionListener {
 			switch(selectedItem) {
 
 				case "Jewellry":
-					displayValuableDialog(new JewellryDialog());
+					displayValuableDialog(new JewellryDialog(), selectedItem);
 					break;
 				case "Stock":
-					displayValuableDialog(new StockDialog());
+					displayValuableDialog(new StockDialog(), selectedItem);
 					break;
 				case "Apparatus":
-					displayValuableDialog(new ApparatusDialog());
+					displayValuableDialog(new ApparatusDialog(), selectedItem);
 					break;
 
 			}

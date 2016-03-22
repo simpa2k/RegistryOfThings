@@ -1,5 +1,7 @@
 package graphicalUI;
 
+import valuables.Apparatus;
+
 import javax.swing.JPanel;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -7,20 +9,20 @@ import javax.swing.JTextField;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 
-public class ApparatusDialog extends JPanel {
+public class ApparatusDialog extends ValuableDialog {
 
-	GridBagConstraints c = new GridBagConstraints();
+	JTextField nameInput;
+	JTextField purchasePriceInput;
+	JTextField wearInput;
 
 	public ApparatusDialog() {
-
-		setLayout(new GridBagLayout());
 
 		setColumnAndRow(0, 0);
 		JLabel name = new JLabel("Namn:");
 		add(name, c);
 
 		setColumnAndRow(1, 0);
-		JTextField nameInput = new JTextField(10);
+		nameInput = new JTextField(10);
 		add(nameInput, c);
 
 		setColumnAndRow(0, 1);
@@ -28,24 +30,34 @@ public class ApparatusDialog extends JPanel {
 		add(price, c);
 
 		setColumnAndRow(1, 1);
-		JTextField priceInput = new JTextField(10);
-		add(priceInput, c);
+		purchasePriceInput = new JTextField(10);
+		add(purchasePriceInput, c);
 
 		setColumnAndRow(0, 2);
 		JLabel wear = new JLabel("Slitage:");
 		add(wear, c);
 
 		setColumnAndRow(1, 2);
-		JTextField wearInput = new JTextField(10);
+		wearInput = new JTextField(10);
 		add(wearInput, c);
-
 
 	}
 
-	private void setColumnAndRow(int x, int y) {
+	@Override
+	public Apparatus getNewValuable() {
 
-		c.gridx = x;
-		c.gridy = y;
+		try {
+		
+			double numericPurchasePrice = Double.parseDouble(purchasePriceInput.getText());
+			int numericWear = Integer.parseInt(wearInput.getText());
+
+			return new Apparatus(nameInput.getText(), numericPurchasePrice, numericWear);
+
+		} catch(IllegalArgumentException e) {
+
+			return null;
+
+		}
 
 	}
 

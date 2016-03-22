@@ -17,7 +17,7 @@ public class GraphicalUI extends JFrame {
 		ParentContentPane parentContentPane = new ParentContentPane(this);
 		setContentPane(parentContentPane);
 
-		//pack();
+		pack();
 
 	}
 

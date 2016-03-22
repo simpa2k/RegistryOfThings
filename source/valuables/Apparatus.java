@@ -9,7 +9,22 @@ public class Apparatus extends Valuable {
 
 		super(name);
 		this.purchasePrice = purchasePrice;
-		this.wear = wear;
+		
+		setWear(wear);
+
+	}
+
+	private void setWear(int wear) {
+
+		if(wear < 0 || wear > 10) {
+
+			throw new IllegalArgumentException();
+
+		} else {
+
+			this.wear = wear;
+
+		}
 
 	}
 
