@@ -13,6 +13,12 @@ public class Stock extends Valuable {
 
 	}
 
+	public void setSharePrice(double sharePrice) {
+
+		this.sharePrice = sharePrice;
+
+	}
+
 	@Override
 	protected double calculateValue() {
 
@@ -25,7 +31,7 @@ public class Stock extends Valuable {
 
 		return String.format("%s: %s Värde: %s Antal: %s Kurs: %s",
 							 this.getClass().getSimpleName(),
-							 name,
+							 getName(),
 							 calculateValueWithTax(),
 							 amount,
 							 sharePrice);

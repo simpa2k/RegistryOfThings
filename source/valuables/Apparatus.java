@@ -27,7 +27,7 @@ public class Apparatus extends Valuable {
 
 		return String.format("%s: %s Värde: %s Pris: %s Slitage: %s",
 							 this.getClass().getSimpleName(),
-							 name,
+							 getName(),
 							 calculateValueWithTax(),
 							 purchasePrice,
 							 wear);

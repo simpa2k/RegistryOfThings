@@ -2,11 +2,17 @@ package valuables;
 
 public abstract class Valuable {
 
-	protected String name;
+	private String name;
 
 	public Valuable(String name) {
 
 		this.name = name;
+
+	}
+
+	public String getName() {
+
+		return name;
 
 	}
 
@@ -19,6 +25,5 @@ public abstract class Valuable {
 		return valueWithTax;
 
 	}
-
-	public abstract String toString();
+	
 }

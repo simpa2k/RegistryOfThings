@@ -1,8 +1,12 @@
 package graphicalUI;
 
+import register.*;
+import valuables.*;
 import javax.swing.JFrame;
 
 public class GraphicalUI extends JFrame {
+
+	private RegisterController registerController = new RegisterController();
 
 	public GraphicalUI() {
 

@@ -10,7 +10,6 @@ public class TextUI {
 
 	private void initialize() {
 
-		registerModel.addValuables();
 
 	}
 

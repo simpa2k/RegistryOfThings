@@ -1,28 +1,40 @@
 package graphicalUI;
 
+import register.*;
+import valuables.*;
+
+import java.util.ArrayList;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JOptionPane;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
 
 public class ParentContentPane extends JPanel implements ActionListener {
 
 	GridBagConstraints c = new GridBagConstraints();
-	JFrame frame;
+	JFrame parentFrame;
+	private RegisterModel registerModel = new RegisterModel();
 
-	public ParentContentPane(JFrame frame) {
+	JTextArea textArea;
+
+	public ParentContentPane(JFrame parentFrame) {
 
 		setLayout(new GridBagLayout());
-		this.frame = frame; 
+		this.parentFrame = parentFrame; 
 
 		populateUpperRow();
 		populateMiddleRow();
@@ -63,6 +75,10 @@ public class ParentContentPane extends JPanel implements ActionListener {
 		JRadioButton sortByValue = new JRadioButton("Värde");
 		radioButtonContentPane.add(sortByValue, c);
 
+		ButtonGroup buttonGroup = new ButtonGroup();
+		buttonGroup.add(sortByName);
+		buttonGroup.add(sortByValue);
+
 		setColumnAndRow(1, 1);
 		add(radioButtonContentPane, c);
 
@@ -71,8 +87,9 @@ public class ParentContentPane extends JPanel implements ActionListener {
 	private void populateMiddleRow() {
 
 		setColumnAndRow(0, 1);
-		JTextArea textArea = new JTextArea(5, 20);
+		textArea = new JTextArea(6, 15);
 		JScrollPane scrollPane = new JScrollPane(textArea);
+
 		add(scrollPane, c);
 
 		addRadioButtons();
@@ -92,6 +109,7 @@ public class ParentContentPane extends JPanel implements ActionListener {
 
 		setColumnAndRow(1, 0);
 		JButton show = new JButton("Visa");
+		show.addActionListener(this);
 		bottomRow.add(show, c);
 
 		setColumnAndRow(2, 0);
@@ -103,6 +121,24 @@ public class ParentContentPane extends JPanel implements ActionListener {
 
 	}
 
+	private void displayDialog(JOptionPane optionPane) {
+
+		JDialog dialog = new JDialog(parentFrame);
+
+		dialog.add(optionPane);
+		dialog.pack();
+		dialog.setVisible(true);
+
+	}
+
+	private void displayValuableDialog(JPanel valuableDialog) {
+
+		JOptionPane optionPane = new JOptionPane(valuableDialog, JOptionPane.QUESTION_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
+
+		displayDialog(optionPane);
+
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent event) {
 
@@ -111,13 +147,34 @@ public class ParentContentPane extends JPanel implements ActionListener {
 			JComboBox valuableCategories = (JComboBox) event.getSource();
 			String selectedItem = (String) valuableCategories.getSelectedItem();
 
-			String str = (String)JOptionPane.showInputDialog(frame,
-															 "test",
-															  "Test Dialog",
-															  JOptionPane.QUESTION_MESSAGE,
-															  null,
-															  null,
-															  "");
+			switch(selectedItem) {
+
+				case "Jewellry":
+					displayValuableDialog(new JewellryDialog());
+					break;
+				case "Stock":
+					displayValuableDialog(new StockDialog());
+					break;
+				case "Apparatus":
+					displayValuableDialog(new ApparatusDialog());
+					break;
+
+			}
+
+		} else if(event.getSource() instanceof JButton) {
+
+			ArrayList<Valuable> valuables = registerModel.getValuables();
+
+			String valuableList = "";
+
+			for(Valuable valuable : valuables) {
+
+				valuableList += valuable + "\n";
+
+			}
+
+			textArea.setText(valuableList);
+
 		}
 
 	}

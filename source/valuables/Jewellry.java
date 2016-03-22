@@ -31,7 +31,7 @@ public class Jewellry extends Valuable {
 
 		return String.format("%s: %s Värde: %s Stenar: %s Material: %s",
 							 this.getClass().getSimpleName(),
-							 name,
+							 getName(),
 							 calculateValueWithTax(),
 							 numberOfGems,
 							 metal);
