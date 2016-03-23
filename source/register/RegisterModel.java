@@ -15,7 +15,7 @@ public class RegisterModel {
 
 	}
 
-	public void addValuable(Valuable valuable) {
+	public void update(Valuable valuable) {
 
 		valuables.add(valuable);
 

@@ -23,11 +23,12 @@ import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 
-public class ParentContentPane extends JPanel implements ActionListener {
+public class ParentContentPane extends JPanel {
 
 	GridBagConstraints c = new GridBagConstraints();
 	JFrame parentFrame;
 	private RegisterModel registerModel = new RegisterModel();
+	private RegisterController registerController = new RegisterController(this, registerModel);
 
 	JTextArea textArea;
 
@@ -106,12 +107,12 @@ public class ParentContentPane extends JPanel implements ActionListener {
 		setColumnAndRow(0, 0);
 		String[] valuableCategories = {"Jewellry", "Stock", "Apparatus"};
 		JComboBox comboBox = new JComboBox(valuableCategories);
-		comboBox.addActionListener(this);
+		comboBox.addActionListener(registerController);
 		bottomRow.add(comboBox, c);
 
 		setColumnAndRow(1, 0);
 		JButton show = new JButton("Visa");
-		show.addActionListener(this);
+		show.addActionListener(registerController);
 		bottomRow.add(show, c);
 
 		setColumnAndRow(2, 0);
@@ -123,79 +124,9 @@ public class ParentContentPane extends JPanel implements ActionListener {
 
 	}
 
-	private void getNewValuable(ValuableDialog valuableDialog) {
+	public void update(String listOfValuables) {
 
-		Valuable newValuable = valuableDialog.getNewValuable();
-
-		if(newValuable == null) {
-
-			JOptionPane.showMessageDialog(valuableDialog,
-										  "Fel inmatning!",
-										  "Fel!",
-										  JOptionPane.ERROR_MESSAGE);
-
-		} else {
-
-			System.out.println(newValuable);
-
-		}
-
-	}
-
-	private void displayValuableDialog(ValuableDialog valuableDialog, String typOfValuable) {
-
-		int okOrCancel = JOptionPane.showOptionDialog(this, 
-									 valuableDialog, 
-									 "Add " + typOfValuable, 
-									 JOptionPane.OK_CANCEL_OPTION, 
-									 JOptionPane.QUESTION_MESSAGE, 
-									 null, null, null);
-
-		if(okOrCancel == 0) {
-
-			getNewValuable(valuableDialog);
-
-		}
-
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent event) {
-
-		if(event.getSource() instanceof JComboBox) {
-
-			JComboBox valuableCategories = (JComboBox) event.getSource();
-			String selectedItem = (String) valuableCategories.getSelectedItem();
-
-			switch(selectedItem) {
-
-				case "Jewellry":
-					displayValuableDialog(new JewellryDialog(), selectedItem);
-					break;
-				case "Stock":
-					displayValuableDialog(new StockDialog(), selectedItem);
-					break;
-				case "Apparatus":
-					displayValuableDialog(new ApparatusDialog(), selectedItem);
-					break;
-
-			}
-
-		} else if(event.getSource() instanceof JButton) {
-
-			ArrayList<Valuable> valuables = registerModel.getValuables();
-
-			String valuableList = "";
-
-			for(Valuable valuable : valuables) {
-
-				valuableList += valuable + "\n";
-
-			}
-
-			textArea.setText(valuableList);
-
-		}
+		textArea.setText(listOfValuables);
 
 	}
 
