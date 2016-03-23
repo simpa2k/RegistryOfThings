@@ -157,22 +157,6 @@ public class ParentContentPane extends JPanel implements ActionListener {
 
 		}
 
-		/*JOptionPane newValuableOptionPane = new JOptionPane(valuableDialog, JOptionPane.QUESTION_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
-
-		JDialog dialog = newValuableOptionPane.createDialog(this, "Add " + typOfValuable);
-		dialog.show();
-
-		if(newValuableOptionPane.getValue() == null) {
-
-			return;
-
-		} else {
-
-			getNewValuable(valuableDialog);
-
-		}*/
-		
-
 	}
 
 	@Override
