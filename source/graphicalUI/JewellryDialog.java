@@ -58,7 +58,7 @@ public class JewellryDialog extends ValuableDialog implements ItemListener {
 			int numericNumberOfGems = Integer.parseInt(numberOfGems.getText());
 			return new Jewellry(nameInput.getText(), numericNumberOfGems, goldBoxChecked);
 
-		} catch(NumberFormatException e) {
+		} catch(IllegalArgumentException e) {
 
 			return null; //Throwa nytt exception här istället?
 

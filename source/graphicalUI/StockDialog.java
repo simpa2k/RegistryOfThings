@@ -54,7 +54,7 @@ public class StockDialog extends ValuableDialog {
 
 			return new Stock(nameInput.getText(), numericAmount, numericSharePrice);
 
-		} catch(NumberFormatException e) {
+		} catch(IllegalArgumentException e) {
 
 			return null; //Throwa nytt exception här istället?
 
