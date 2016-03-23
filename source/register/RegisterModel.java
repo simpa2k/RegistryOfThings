@@ -2,6 +2,7 @@ package register;
 
 import valuables.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class RegisterModel {
 
@@ -32,6 +33,14 @@ public class RegisterModel {
 	public ArrayList<Valuable> getValuables() {
 
 		return valuables;
+
+	}
+
+	public void sortValuablesByName() {
+
+		Collections.sort(valuables, 
+						(Valuable valuable1, Valuable valuable2)->
+						valuable1.getName().compareTo(valuable2.getName()));
 
 	}
 

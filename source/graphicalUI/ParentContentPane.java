@@ -60,7 +60,6 @@ public class ParentContentPane extends JPanel {
 
 	}
 
-
 	private void addRadioButtons() {
 
 		JPanel radioButtonContentPane = new JPanel();
@@ -73,10 +72,13 @@ public class ParentContentPane extends JPanel {
 		setColumnAndRow(0, 1);
 		JRadioButton sortByName = new JRadioButton("Namn");
 		radioButtonContentPane.add(sortByName, c);
+		sortByName.addActionListener(registerController);
+		sortByName.setSelected(true);
 
 		setColumnAndRow(0, 2);
 		JRadioButton sortByValue = new JRadioButton("Värde");
 		radioButtonContentPane.add(sortByValue, c);
+		sortByValue.addActionListener(registerController);
 
 		ButtonGroup buttonGroup = new ButtonGroup();
 		buttonGroup.add(sortByName);

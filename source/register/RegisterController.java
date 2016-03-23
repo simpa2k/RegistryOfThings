@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JDialog;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.JRadioButton;
 
 public class RegisterController implements ActionListener {
 
@@ -48,7 +49,7 @@ public class RegisterController implements ActionListener {
 									 				  valuableDialog, 
 									 				  "Add " + typOfValuable, 
 									 				  JOptionPane.OK_CANCEL_OPTION, 
-									 				  JOptionPane.QUESTION_MESSAGE, 
+							 		 				  JOptionPane.QUESTION_MESSAGE, 
 									 				  null, null, null);
 
 		if(okOrCancel == 0) {
@@ -94,6 +95,18 @@ public class RegisterController implements ActionListener {
 			}
 
 			view.update(valuableList);
+
+		} else if(event.getSource() instanceof JRadioButton) {
+
+			switch(event.getActionCommand()) {
+
+				case("Namn"):
+					model.sortValuablesByName();
+					break;
+				/*case("Värde"):
+					model.sortValuablesByValue();*/ 
+
+			}
 
 		}
 

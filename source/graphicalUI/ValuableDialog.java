@@ -13,11 +13,12 @@ import java.awt.GridBagConstraints;
 
 public abstract class ValuableDialog extends JPanel {
 
-	GridBagConstraints c = new GridBagConstraints(); 
+	GridBagConstraints c; 
 
 	public ValuableDialog() {
 
 		setLayout(new GridBagLayout());
+		c = new GridBagConstraints();
 
 	}
 

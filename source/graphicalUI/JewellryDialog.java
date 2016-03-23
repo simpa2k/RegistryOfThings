@@ -13,8 +13,6 @@ import java.awt.event.ItemEvent;
 
 public class JewellryDialog extends ValuableDialog implements ItemListener {
 
-	GridBagConstraints c = new GridBagConstraints();
-
 	JTextField nameInput;
 	JTextField numberOfGems;
 	boolean goldBoxChecked = false;
