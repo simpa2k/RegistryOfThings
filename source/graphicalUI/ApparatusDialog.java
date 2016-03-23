@@ -55,7 +55,7 @@ public class ApparatusDialog extends ValuableDialog {
 
 		} catch(IllegalArgumentException e) {
 
-			return null;
+			return null; //Throwa nytt exception här istället?
 
 		}
 

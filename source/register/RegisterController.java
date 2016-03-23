@@ -27,16 +27,16 @@ public class RegisterController implements ActionListener {
 
 		Valuable newValuable = valuableDialog.getNewValuable();
 
-		if(newValuable == null) {
+		try {
+
+			model.add(newValuable);
+
+		} catch(IllegalArgumentException e) {
 
 			JOptionPane.showMessageDialog(valuableDialog,
 										  "Fel inmatning!",
 										  "Fel!",
 										  JOptionPane.ERROR_MESSAGE);
-
-		} else {
-
-			model.update(newValuable);
 
 		}
 
@@ -45,11 +45,11 @@ public class RegisterController implements ActionListener {
 	private void displayValuableDialog(ValuableDialog valuableDialog, String typOfValuable) {
 
 		int okOrCancel = JOptionPane.showOptionDialog(view, 
-									 valuableDialog, 
-									 "Add " + typOfValuable, 
-									 JOptionPane.OK_CANCEL_OPTION, 
-									 JOptionPane.QUESTION_MESSAGE, 
-									 null, null, null);
+									 				  valuableDialog, 
+									 				  "Add " + typOfValuable, 
+									 				  JOptionPane.OK_CANCEL_OPTION, 
+									 				  JOptionPane.QUESTION_MESSAGE, 
+									 				  null, null, null);
 
 		if(okOrCancel == 0) {
 

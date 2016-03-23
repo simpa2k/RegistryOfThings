@@ -56,7 +56,7 @@ public class StockDialog extends ValuableDialog {
 
 		} catch(NumberFormatException e) {
 
-			return null;
+			return null; //Throwa nytt exception här istället?
 
 		}
 

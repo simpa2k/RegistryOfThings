@@ -53,7 +53,6 @@ public class JewellryDialog extends ValuableDialog implements ItemListener {
 	@Override
 	public Jewellry getNewValuable() {
 
-		//Felhantering här
 		try {
 		
 			int numericNumberOfGems = Integer.parseInt(numberOfGems.getText());
@@ -61,7 +60,7 @@ public class JewellryDialog extends ValuableDialog implements ItemListener {
 
 		} catch(NumberFormatException e) {
 
-			return null;
+			return null; //Throwa nytt exception här istället?
 
 		}
 

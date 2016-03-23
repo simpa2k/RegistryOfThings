@@ -15,9 +15,17 @@ public class RegisterModel {
 
 	}
 
-	public void update(Valuable valuable) {
+	public void add(Valuable valuable) {
 
-		valuables.add(valuable);
+		if(valuable == null) {
+			
+			throw new IllegalArgumentException();
+
+		} else {
+
+			valuables.add(valuable);
+
+		}
 
 	}
 
