@@ -2,6 +2,7 @@ package graphicalUI;
 
 import register.*;
 import valuables.*;
+import observer.*;
 
 import java.util.ArrayList;
 
@@ -23,19 +24,20 @@ import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 
-public class ParentContentPane extends JPanel {
+public class ParentContentPane extends JPanel implements Observer {
 
 	GridBagConstraints c = new GridBagConstraints();
 	JFrame parentFrame;
-	private RegisterModel registerModel = new RegisterModel();
-	private RegisterController registerController = new RegisterController(this, registerModel);
+	private RegisterModel model = new RegisterModel();
+	private RegisterController controller = new RegisterController(this, model);
 
 	JTextArea textArea;
 
 	public ParentContentPane(JFrame parentFrame) {
 
 		setLayout(new GridBagLayout());
-		this.parentFrame = parentFrame; 
+		this.parentFrame = parentFrame;
+		registerWithSubject(this);
 
 		populateUpperRow();
 		populateMiddleRow();
@@ -72,13 +74,13 @@ public class ParentContentPane extends JPanel {
 		setColumnAndRow(0, 1);
 		JRadioButton sortByName = new JRadioButton("Namn");
 		radioButtonContentPane.add(sortByName, c);
-		sortByName.addActionListener(registerController);
+		sortByName.addActionListener(controller);
 		sortByName.setSelected(true);
 
 		setColumnAndRow(0, 2);
 		JRadioButton sortByValue = new JRadioButton("Värde");
 		radioButtonContentPane.add(sortByValue, c);
-		sortByValue.addActionListener(registerController);
+		sortByValue.addActionListener(controller);
 
 		ButtonGroup buttonGroup = new ButtonGroup();
 		buttonGroup.add(sortByName);
@@ -109,16 +111,17 @@ public class ParentContentPane extends JPanel {
 		setColumnAndRow(0, 0);
 		String[] valuableCategories = {"Jewellry", "Stock", "Apparatus"};
 		JComboBox comboBox = new JComboBox(valuableCategories);
-		comboBox.addActionListener(registerController);
+		comboBox.addActionListener(controller);
 		bottomRow.add(comboBox, c);
 
 		setColumnAndRow(1, 0);
 		JButton show = new JButton("Visa");
-		show.addActionListener(registerController);
+		show.addActionListener(controller);
 		bottomRow.add(show, c);
 
 		setColumnAndRow(2, 0);
 		JButton crash = new JButton("Börskrasch");
+		crash.addActionListener(controller);
 		bottomRow.add(crash, c);
 
 		setColumnAndRow(0, 2);
@@ -126,9 +129,17 @@ public class ParentContentPane extends JPanel {
 
 	}
 
-	public void update(String listOfValuables) {
+	@Override
+	public void registerWithSubject(Observer observer) {
 
-		textArea.setText(listOfValuables);
+		model.addObserver(this);
+
+	}
+
+	@Override
+	public void update() {
+
+		textArea.setText(model.getValuables());
 
 	}
 

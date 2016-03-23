@@ -14,11 +14,20 @@ import java.awt.GridBagConstraints;
 public abstract class ValuableDialog extends JPanel {
 
 	GridBagConstraints c; 
+	JTextField nameInput;
 
 	public ValuableDialog() {
 
 		setLayout(new GridBagLayout());
 		c = new GridBagConstraints();
+
+		setColumnAndRow(0, 0);
+		JLabel name = new JLabel("Namn:");
+		add(name, c);
+
+		setColumnAndRow(1, 0);
+		nameInput = new JTextField(10);
+		add(nameInput, c);
 
 	}
 
@@ -26,6 +35,16 @@ public abstract class ValuableDialog extends JPanel {
 
 		c.gridx = x;
 		c.gridy = y;
+
+	}
+
+	protected void validateNameInput() {
+
+		if(nameInput.getText().matches("\\d+")) {
+
+			throw new IllegalArgumentException();
+
+		}
 
 	}
 

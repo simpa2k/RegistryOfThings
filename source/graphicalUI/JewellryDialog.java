@@ -12,22 +12,11 @@ import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 
 public class JewellryDialog extends ValuableDialog implements ItemListener {
-
-	JTextField nameInput;
+	
 	JTextField numberOfGems;
 	boolean goldBoxChecked = false;
 
 	public JewellryDialog() {
-
-		setLayout(new GridBagLayout());
-
-		setColumnAndRow(0, 0);
-		JLabel name = new JLabel("Namn:");
-		add(name, c);
-
-		setColumnAndRow(1, 0);
-		nameInput = new JTextField(10);
-		add(nameInput, c);
 
 		setColumnAndRow(0, 1);
 		JLabel gems = new JLabel("Stenar:");
@@ -53,6 +42,8 @@ public class JewellryDialog extends ValuableDialog implements ItemListener {
 
 		try {
 		
+			validateNameInput();
+
 			int numericNumberOfGems = Integer.parseInt(numberOfGems.getText());
 			return new Jewellry(nameInput.getText(), numericNumberOfGems, goldBoxChecked);
 

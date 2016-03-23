@@ -84,17 +84,16 @@ public class RegisterController implements ActionListener {
 
 		} else if(event.getSource() instanceof JButton) {
 
-			ArrayList<Valuable> valuables = model.getValuables();
+			switch(event.getActionCommand()) {
 
-			String valuableList = "";
-
-			for(Valuable valuable : valuables) {
-
-				valuableList += valuable + "\n";
+				case("Visa"):
+					model.updateObservers();
+					break;
+				case("Börskrasch"):
+					model.setSharePricesToZero();
+					break;
 
 			}
-
-			view.update(valuableList);
 
 		} else if(event.getSource() instanceof JRadioButton) {
 
@@ -103,8 +102,8 @@ public class RegisterController implements ActionListener {
 				case("Namn"):
 					model.sortValuablesByName();
 					break;
-				/*case("Värde"):
-					model.sortValuablesByValue();*/ 
+				case("Värde"):
+					model.sortValuablesByValue();
 
 			}
 
