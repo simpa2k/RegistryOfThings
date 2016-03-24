@@ -1,41 +1,21 @@
-package register;
+package registry;
 
 import valuables.*;
 import compare.*;
-import observer.*;
+import mvc.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class RegisterModel implements Subject {
+public class RegistryModel extends Model {
 
 	private ArrayList<Valuable> valuables = new ArrayList<>();
-	private ArrayList<Observer> observers = new ArrayList<>();
 
-	public RegisterModel() {
+	public RegistryModel() {
 
 		valuables.add(new Jewellry("Ring", 3, true));
 		valuables.add(new Stock("Alfa Laval", 120, 169.1));
 		valuables.add(new Apparatus("TV", 3000.0, 3));
-
-	}
-
-	@Override
-	public void addObserver(Observer observer) {
-
-		observers.add(observer);
-
-	}
-
-
-	@Override
-	public void updateObservers() {
-
-		for(Observer observer : observers) {
-
-			observer.update();
-
-		}
 
 	}
 
@@ -79,7 +59,7 @@ public class RegisterModel implements Subject {
 
 		}
 
-		updateObservers();
+		updateView();
 
 	}
 
@@ -87,7 +67,7 @@ public class RegisterModel implements Subject {
 
 		Collections.sort(valuables, new NameComparator());
 
-		updateObservers();
+		updateView();
 
 	}
 
@@ -95,7 +75,7 @@ public class RegisterModel implements Subject {
 
 		Collections.sort(valuables, new ValueComparator());
 
-		updateObservers();
+		updateView();
 
 	}
 

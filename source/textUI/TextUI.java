@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class TextUI {
 
-	RegisterModel registerModel = new RegisterModel();
+	RegistryModel registryModel = new RegistryModel();
 
 	private void initialize() {
 
@@ -17,7 +17,7 @@ public class TextUI {
 
 		RegisterController registerController = new RegisterController();
 
-		ArrayList<Valuable> valuables = registerModel.getValuables();
+		ArrayList<Valuable> valuables = registryModel.getValuables();
 
 		for(Valuable valuable : valuables) {
 

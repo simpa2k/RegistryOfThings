@@ -1,36 +1,40 @@
 package graphicalUI;
 
-import register.*;
+import registry.*;
 import valuables.*;
+
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
 
 public class GraphicalUI extends JFrame {
 
-	public GraphicalUI() {
+	MainContentPane mainContentPane = new MainContentPane(this);
+	RegistryView view;
+
+	public GraphicalUI(RegistryView view) {
+
+		this.view = view;
 
 		setName("Sakregister");
 		setSize(500, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		ParentContentPane parentContentPane = new ParentContentPane(this);
-		setContentPane(parentContentPane);
+		setContentPane(mainContentPane);
 
 		pack();
 
 	}
 
-	public static void main(String[] args) {
+	public void updateTextArea(String text) {
 
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+		mainContentPane.updateTextArea(text);
 
-			public void run() {
+	}
 
-				GraphicalUI gUI = new GraphicalUI();
-				gUI.setVisible(true);
+	public void handleEvent(ActionEvent event, MainContentPane mainContentPane) {
 
-			}
-
-		});
+		view.handleEvent(event, mainContentPane);
 
 	}
 

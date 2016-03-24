@@ -1,26 +1,32 @@
-package register;
+package registry;
 
 import graphicalUI.*;
 import valuables.*;
+import mvc.*;
 
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JPanel;
 import javax.swing.JOptionPane;
 import javax.swing.JDialog;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 
-public class RegisterController implements ActionListener {
+public class RegistryController extends Controller {
 
-	private ParentContentPane view;
-	private RegisterModel model;
+	public RegistryController(RegistryModel model) {
 
-	public RegisterController(ParentContentPane view, RegisterModel model) {
+		super(model);
 
-		this.view = view;
-		this.model = model;
+	}
+
+	private RegistryModel getTypeCastedModel() {
+
+		//Type casting safe since constructor demands RegistryController
+		return (RegistryModel) getModel();
 
 	}
 
@@ -30,7 +36,7 @@ public class RegisterController implements ActionListener {
 
 		try {
 
-			model.add(newValuable);
+			getTypeCastedModel().add(newValuable);
 
 		} catch(IllegalArgumentException e) {
 
@@ -43,9 +49,9 @@ public class RegisterController implements ActionListener {
 
 	}
 
-	private void displayValuableDialog(ValuableDialog valuableDialog, String typOfValuable) {
+	private void displayValuableDialog(JPanel eventFiringPanel, ValuableDialog valuableDialog, String typOfValuable) {
 
-		int okOrCancel = JOptionPane.showOptionDialog(view, 
+		int okOrCancel = JOptionPane.showOptionDialog(eventFiringPanel,
 									 				  valuableDialog, 
 									 				  "Add " + typOfValuable, 
 									 				  JOptionPane.OK_CANCEL_OPTION, 
@@ -61,7 +67,7 @@ public class RegisterController implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent event) {
+	public void handleEvent(ActionEvent event, JPanel eventFiringPanel) {
 
 		if(event.getSource() instanceof JComboBox) {
 
@@ -71,13 +77,13 @@ public class RegisterController implements ActionListener {
 			switch(selectedItem) {
 
 				case "Jewellry":
-					displayValuableDialog(new JewellryDialog(), selectedItem);
+					displayValuableDialog(eventFiringPanel, new JewellryDialog(), selectedItem);
 					break;
 				case "Stock":
-					displayValuableDialog(new StockDialog(), selectedItem);
+					displayValuableDialog(eventFiringPanel, new StockDialog(), selectedItem);
 					break;
 				case "Apparatus":
-					displayValuableDialog(new ApparatusDialog(), selectedItem);
+					displayValuableDialog(eventFiringPanel, new ApparatusDialog(), selectedItem);
 					break;
 
 			}
@@ -87,10 +93,10 @@ public class RegisterController implements ActionListener {
 			switch(event.getActionCommand()) {
 
 				case("Visa"):
-					model.updateObservers();
+					getModel().updateView();
 					break;
 				case("Börskrasch"):
-					model.setSharePricesToZero();
+					getTypeCastedModel().setSharePricesToZero();
 					break;
 
 			}
@@ -100,10 +106,10 @@ public class RegisterController implements ActionListener {
 			switch(event.getActionCommand()) {
 
 				case("Namn"):
-					model.sortValuablesByName();
+					getTypeCastedModel().sortValuablesByName();
 					break;
 				case("Värde"):
-					model.sortValuablesByValue();
+					getTypeCastedModel().sortValuablesByValue();
 
 			}
 
