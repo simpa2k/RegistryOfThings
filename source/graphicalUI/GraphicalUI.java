@@ -9,12 +9,14 @@ import java.awt.event.ActionEvent;
 
 public class GraphicalUI extends JFrame {
 
-	MainContentPane mainContentPane = new MainContentPane(this);
+	MainContentPane mainContentPane;
 	RegistryView view;
 
 	public GraphicalUI(RegistryView view) {
 
 		this.view = view;
+
+		mainContentPane = new MainContentPane(this);
 
 		setName("Sakregister");
 		setSize(500, 500);
@@ -26,6 +28,12 @@ public class GraphicalUI extends JFrame {
 
 	}
 
+	public MainContentPane getMainContentPane() {
+
+		return mainContentPane;
+
+	}
+
 	public void updateTextArea(String text) {
 
 		mainContentPane.updateTextArea(text);
@@ -33,7 +41,7 @@ public class GraphicalUI extends JFrame {
 	}
 
 	public void handleEvent(ActionEvent event, MainContentPane mainContentPane) {
-
+		
 		view.handleEvent(event, mainContentPane);
 
 	}

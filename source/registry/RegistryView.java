@@ -2,15 +2,20 @@ package registry;
 
 import mvc.*;
 import graphicalUI.GraphicalUI;
+import graphicalUI.MainContentPane;
+
+import java.awt.event.ActionEvent;
+import javax.swing.JRadioButton;
+import javax.swing.JPanel;
 
 public class RegistryView extends View {
 
-	GraphicalUI graphicalUI = new GraphicalUI(this);
+	private GraphicalUI graphicalUI;
 
 	public RegistryView(RegistryModel model, RegistryController controller) {
 
 		super(model, controller);
-		model.registerView(this);
+		graphicalUI = new GraphicalUI(this);
 
 	}
 
@@ -24,7 +29,7 @@ public class RegistryView extends View {
 	public void update() {
 
 		RegistryModel castedModel = (RegistryModel) getModel();
-
+		
 		graphicalUI.updateTextArea(castedModel.getValuables());
 
 	}
@@ -34,6 +39,16 @@ public class RegistryView extends View {
 		RegistryModel model = new RegistryModel();
 		RegistryController controller = new RegistryController(model);
 		RegistryView view = new RegistryView(model, controller);
+
+		//Sorting valuables by name
+		MainContentPane mainContentPane = view.getGraphicalUI().getMainContentPane();
+		JRadioButton initiallySelectedSortingOrder = mainContentPane.getSelectedRadioButton();
+		
+		ActionEvent sortValuesByName = new ActionEvent(initiallySelectedSortingOrder, 
+													   ActionEvent.ACTION_PERFORMED, 
+													   initiallySelectedSortingOrder.getActionCommand())
+		
+		view.handleEvent(sortValuesByName, mainContentPane);
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 

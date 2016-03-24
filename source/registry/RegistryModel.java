@@ -59,7 +59,7 @@ public class RegistryModel extends Model {
 
 		}
 
-		updateView();
+		//updateView();
 
 	}
 
@@ -67,7 +67,7 @@ public class RegistryModel extends Model {
 
 		Collections.sort(valuables, new NameComparator());
 
-		updateView();
+		//updateView();
 
 	}
 
@@ -75,7 +75,7 @@ public class RegistryModel extends Model {
 
 		Collections.sort(valuables, new ValueComparator());
 
-		updateView();
+		//updateView();
 
 	}
 

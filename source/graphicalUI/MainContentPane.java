@@ -30,6 +30,8 @@ public class MainContentPane extends JPanel implements ActionListener {
 	GraphicalUI parentFrame;
 
 	JTextArea textArea;
+	JRadioButton sortByName;
+	JRadioButton sortByValue;
 
 	public MainContentPane(GraphicalUI parentFrame) {
 
@@ -69,13 +71,13 @@ public class MainContentPane extends JPanel implements ActionListener {
 		radioButtonContentPane.add(sorting);
 
 		setColumnAndRow(0, 1);
-		JRadioButton sortByName = new JRadioButton("Namn");
+		sortByName = new JRadioButton("Namn");
 		radioButtonContentPane.add(sortByName, c);
 		sortByName.addActionListener(this);
 		sortByName.setSelected(true);
 
 		setColumnAndRow(0, 2);
-		JRadioButton sortByValue = new JRadioButton("Värde");
+		sortByValue = new JRadioButton("Värde");
 		radioButtonContentPane.add(sortByValue, c);
 		sortByValue.addActionListener(this);
 
@@ -129,6 +131,12 @@ public class MainContentPane extends JPanel implements ActionListener {
 	public void updateTextArea(String text) {
 
 		textArea.setText(text);
+
+	}
+
+	public JRadioButton getSelectedRadioButton() {
+
+		return sortByName.isSelected() ? sortByName : sortByValue;
 
 	}
 
