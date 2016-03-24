@@ -2,7 +2,14 @@ package mvc;
 
 public abstract class View {
 
-	protected abstract void registerWithModel(Model model);
-	public void update();
+	private Model model;
+
+	public View() {
+
+		this.model = model;
+
+	}
+
+	public abstract void update();
 
 }
