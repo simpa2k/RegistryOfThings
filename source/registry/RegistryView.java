@@ -40,15 +40,7 @@ public class RegistryView extends View {
 		RegistryController controller = new RegistryController(model);
 		RegistryView view = new RegistryView(model, controller);
 
-		//Sorting valuables by name
-		MainContentPane mainContentPane = view.getGraphicalUI().getMainContentPane();
-		JRadioButton initiallySelectedSortingOrder = mainContentPane.getSelectedRadioButton();
-		
-		ActionEvent sortValuesByName = new ActionEvent(initiallySelectedSortingOrder, 
-													   ActionEvent.ACTION_PERFORMED, 
-													   initiallySelectedSortingOrder.getActionCommand());
-		
-		view.handleEvent(sortValuesByName, mainContentPane);
+		model.sortValuablesByNameWithoutUpdate();
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 

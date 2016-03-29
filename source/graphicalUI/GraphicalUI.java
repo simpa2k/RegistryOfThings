@@ -28,12 +28,6 @@ public class GraphicalUI extends JFrame {
 
 	}
 
-	public MainContentPane getMainContentPane() {
-
-		return mainContentPane;
-
-	}
-
 	public void updateTextArea(String text) {
 
 		mainContentPane.updateTextArea(text);

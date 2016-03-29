@@ -15,6 +15,7 @@ public class RegistryModel extends Model {
 
 		valuables.add(new Jewellry("Ring", 3, true));
 		valuables.add(new Stock("Alfa Laval", 120, 169.1));
+		valuables.add(new Stock("Ericsson", 100, 1300.0));
 		valuables.add(new Apparatus("TV", 3000.0, 3));
 
 	}
@@ -59,7 +60,7 @@ public class RegistryModel extends Model {
 
 		}
 
-		//updateView();
+		updateView();
 
 	}
 
@@ -67,7 +68,13 @@ public class RegistryModel extends Model {
 
 		Collections.sort(valuables, new NameComparator());
 
-		//updateView();
+		updateView();
+
+	}
+
+	public void sortValuablesByNameWithoutUpdate() {
+
+		Collections.sort(valuables, new NameComparator());
 
 	}
 
@@ -75,7 +82,7 @@ public class RegistryModel extends Model {
 
 		Collections.sort(valuables, new ValueComparator());
 
-		//updateView();
+		updateView();
 
 	}
 

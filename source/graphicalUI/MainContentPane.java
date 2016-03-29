@@ -30,8 +30,8 @@ public class MainContentPane extends JPanel implements ActionListener {
 	GraphicalUI parentFrame;
 
 	JTextArea textArea;
-	JRadioButton sortByName;
-	JRadioButton sortByValue;
+	/*JRadioButton sortByName;
+	JRadioButton sortByValue;*/
 
 	public MainContentPane(GraphicalUI parentFrame) {
 
@@ -61,6 +61,18 @@ public class MainContentPane extends JPanel implements ActionListener {
 
 	}
 
+	private void populateMiddleRow() {
+
+		setColumnAndRow(0, 1);
+		textArea = new JTextArea();
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		scrollPane.setPreferredSize(new Dimension(400, 300));
+		add(scrollPane, c);
+
+		addRadioButtons();
+
+	}
+
 	private void addRadioButtons() {
 
 		JPanel radioButtonContentPane = new JPanel();
@@ -71,13 +83,13 @@ public class MainContentPane extends JPanel implements ActionListener {
 		radioButtonContentPane.add(sorting);
 
 		setColumnAndRow(0, 1);
-		sortByName = new JRadioButton("Namn");
+		JRadioButton sortByName = new JRadioButton("Namn");
 		radioButtonContentPane.add(sortByName, c);
 		sortByName.addActionListener(this);
 		sortByName.setSelected(true);
 
 		setColumnAndRow(0, 2);
-		sortByValue = new JRadioButton("Värde");
+		JRadioButton sortByValue = new JRadioButton("Värde");
 		radioButtonContentPane.add(sortByValue, c);
 		sortByValue.addActionListener(this);
 
@@ -87,18 +99,6 @@ public class MainContentPane extends JPanel implements ActionListener {
 
 		setColumnAndRow(1, 1);
 		add(radioButtonContentPane, c);
-
-	}
-
-	private void populateMiddleRow() {
-
-		setColumnAndRow(0, 1);
-		textArea = new JTextArea();
-		JScrollPane scrollPane = new JScrollPane(textArea);
-		scrollPane.setPreferredSize(new Dimension(400, 300));
-		add(scrollPane, c);
-
-		addRadioButtons();
 
 	}
 
@@ -131,12 +131,6 @@ public class MainContentPane extends JPanel implements ActionListener {
 	public void updateTextArea(String text) {
 
 		textArea.setText(text);
-
-	}
-
-	public JRadioButton getSelectedRadioButton() {
-
-		return sortByName.isSelected() ? sortByName : sortByValue;
 
 	}
 
