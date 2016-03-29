@@ -37,13 +37,9 @@ public class Apparatus extends Valuable {
 
 	}
 
-	@Override
-	public String toString() {
+	protected String getProperties() {
 
-		return String.format("%s: %s Värde: %s Pris: %s Slitage: %s",
-							 this.getClass().getSimpleName(),
-							 getName(),
-							 calculateValueWithTax(),
+		return String.format("Pris: %s Slitage: %s",
 							 purchasePrice,
 							 wear);
 

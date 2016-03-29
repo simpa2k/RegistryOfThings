@@ -28,5 +28,17 @@ public abstract class Valuable {
 		return valueWithTax;
 
 	}
+
+	protected abstract String getProperties();
+
+	public String toString() {
+
+		return String.format("%s: %s Värde: %s %s",
+							 getClass().getSimpleName(), 
+							 name, 
+							 calculateValueWithTax(),
+							 getProperties());
+
+	}
 	
 }

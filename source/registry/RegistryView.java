@@ -46,7 +46,7 @@ public class RegistryView extends View {
 		
 		ActionEvent sortValuesByName = new ActionEvent(initiallySelectedSortingOrder, 
 													   ActionEvent.ACTION_PERFORMED, 
-													   initiallySelectedSortingOrder.getActionCommand())
+													   initiallySelectedSortingOrder.getActionCommand());
 		
 		view.handleEvent(sortValuesByName, mainContentPane);
 

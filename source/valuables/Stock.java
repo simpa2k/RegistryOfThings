@@ -26,13 +26,9 @@ public class Stock extends Valuable {
 
 	}
 
-	@Override
-	public String toString() {
+	protected String getProperties() {
 
-		return String.format("%s: %s Värde: %s Antal: %s Kurs: %s",
-							 this.getClass().getSimpleName(),
-							 getName(),
-							 calculateValueWithTax(),
+		return String.format("Antal: %s Kurs: %s",
 							 amount,
 							 sharePrice);
 

@@ -24,15 +24,11 @@ public class Jewellry extends Valuable {
 
 	}
 
-	@Override
-	public String toString() {
+	protected String getProperties() {
 
 		String metal = isGold ? "guld" : "silver";
 
-		return String.format("%s: %s Värde: %s Stenar: %s Material: %s",
-							 this.getClass().getSimpleName(),
-							 getName(),
-							 calculateValueWithTax(),
+		return String.format("Stenar: %s Material: %s",
 							 numberOfGems,
 							 metal);
 
