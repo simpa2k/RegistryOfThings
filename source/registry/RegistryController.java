@@ -43,7 +43,7 @@ public class RegistryController {
 
 	}
 
-	public ValuableDialog determineDialogToBeOpened(String typeOfValuable) {
+	private ValuableDialog determineDialogToBeOpened(String typeOfValuable) {
 
 		switch(typeOfValuable) {
 
