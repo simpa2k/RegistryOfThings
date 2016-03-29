@@ -5,15 +5,15 @@ import javax.swing.JPanel;
 
 public abstract class Controller {
 
-	private Model model;
+	private Subject model;
 
-	public Controller(Model model) {
+	public Controller(Subject model) {
 
 		this.model = model;
 
 	}
 
-	protected Model getModel() {
+	protected Subject getModel() {
 
 		return model;
 

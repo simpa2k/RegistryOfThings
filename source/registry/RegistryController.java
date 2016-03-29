@@ -66,6 +66,18 @@ public class RegistryController extends Controller {
 
 	}
 
+	public void sortValuablesByName() {
+
+		getTypeCastedModel().sortValuablesByName();
+
+	}
+
+	public void sortValuablesByValue() {
+
+		getTypeCastedModel().sortValuablesByValue();
+
+	}
+
 	@Override
 	public void handleEvent(ActionEvent event, JPanel eventFiringPanel) {
 
@@ -93,7 +105,7 @@ public class RegistryController extends Controller {
 			switch(event.getActionCommand()) {
 
 				case("Visa"):
-					getModel().updateView();
+					getModel().updateObserver();
 					break;
 				case("Börskrasch"):
 					getTypeCastedModel().setSharePricesToZero();

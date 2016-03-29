@@ -7,9 +7,10 @@ import mvc.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class RegistryModel extends Model {
+public class RegistryModel implements Subject {
 
 	private ArrayList<Valuable> valuables = new ArrayList<>();
+	private Observer observer;
 
 	public RegistryModel() {
 
@@ -17,6 +18,20 @@ public class RegistryModel extends Model {
 		valuables.add(new Stock("Alfa Laval", 120, 169.1));
 		valuables.add(new Stock("Ericsson", 100, 1300.0));
 		valuables.add(new Apparatus("TV", 3000.0, 3));
+
+	}
+
+	@Override
+	public void registerObserver(Observer observer) {
+
+		this.observer = observer;
+
+	}
+
+	@Override
+	public void updateObserver() {
+
+		observer.update();
 
 	}
 
@@ -60,7 +75,7 @@ public class RegistryModel extends Model {
 
 		}
 
-		updateView();
+		updateObserver();
 
 	}
 
@@ -68,7 +83,7 @@ public class RegistryModel extends Model {
 
 		Collections.sort(valuables, new NameComparator());
 
-		updateView();
+		updateObserver();
 
 	}
 
@@ -82,7 +97,7 @@ public class RegistryModel extends Model {
 
 		Collections.sort(valuables, new ValueComparator());
 
-		updateView();
+		updateObserver();
 
 	}
 

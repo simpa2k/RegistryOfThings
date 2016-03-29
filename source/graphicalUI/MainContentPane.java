@@ -24,7 +24,7 @@ import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 
-public class MainContentPane extends JPanel implements ActionListener {
+public class MainContentPane extends JPanel {
 
 	GridBagConstraints c = new GridBagConstraints();
 	GraphicalUI parentFrame;
@@ -85,13 +85,13 @@ public class MainContentPane extends JPanel implements ActionListener {
 		setColumnAndRow(0, 1);
 		JRadioButton sortByName = new JRadioButton("Namn");
 		radioButtonContentPane.add(sortByName, c);
-		sortByName.addActionListener(this);
+		sortByName.addActionListener(event -> parentFrame.getController().sortValuablesByName());
 		sortByName.setSelected(true);
 
 		setColumnAndRow(0, 2);
 		JRadioButton sortByValue = new JRadioButton("Värde");
 		radioButtonContentPane.add(sortByValue, c);
-		sortByValue.addActionListener(this);
+		sortByValue.addActionListener(event -> parentFrame.getController().sortValuablesByValue());
 
 		ButtonGroup buttonGroup = new ButtonGroup();
 		buttonGroup.add(sortByName);
@@ -110,17 +110,17 @@ public class MainContentPane extends JPanel implements ActionListener {
 		setColumnAndRow(0, 0);
 		String[] valuableCategories = {"Jewellry", "Stock", "Apparatus"};
 		JComboBox comboBox = new JComboBox(valuableCategories);
-		comboBox.addActionListener(this);
+		comboBox.addActionListener( event -> parentFrame.getController().handleEvent(event, this));
 		bottomRow.add(comboBox, c);
 
 		setColumnAndRow(1, 0);
 		JButton show = new JButton("Visa");
-		show.addActionListener(this);
+		show.addActionListener(event -> parentFrame.getController().handleEvent(event, this));
 		bottomRow.add(show, c);
 
 		setColumnAndRow(2, 0);
 		JButton crash = new JButton("Börskrasch");
-		crash.addActionListener(this);
+		crash.addActionListener(event -> parentFrame.getController().handleEvent(event, this));
 		bottomRow.add(crash, c);
 
 		setColumnAndRow(0, 2);
@@ -131,13 +131,6 @@ public class MainContentPane extends JPanel implements ActionListener {
 	public void updateTextArea(String text) {
 
 		textArea.setText(text);
-
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent event) {
-
-		parentFrame.handleEvent(event, this);
 
 	}
 

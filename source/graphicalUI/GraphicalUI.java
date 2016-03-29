@@ -1,20 +1,28 @@
 package graphicalUI;
 
 import registry.*;
+import mvc.*;
 import valuables.*;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 
-public class GraphicalUI extends JFrame {
+public class GraphicalUI extends JFrame implements Observer {
 
 	MainContentPane mainContentPane;
-	RegistryView view;
 
-	public GraphicalUI(RegistryView view) {
+	RegistryModel model;
+	RegistryController controller;
 
-		this.view = view;
+	public GraphicalUI() {
+
+		model = new RegistryModel();
+		this.model = model;
+		model.registerObserver(this);
+
+		controller = new RegistryController(model);
+		this.controller = controller;
 
 		mainContentPane = new MainContentPane(this);
 
@@ -28,15 +36,31 @@ public class GraphicalUI extends JFrame {
 
 	}
 
-	public void updateTextArea(String text) {
+	public RegistryController getController() {
 
-		mainContentPane.updateTextArea(text);
+		return controller;
 
 	}
 
-	public void handleEvent(ActionEvent event, MainContentPane mainContentPane) {
-		
-		view.handleEvent(event, mainContentPane);
+	@Override
+	public void update() {
+
+		mainContentPane.updateTextArea(model.getValuables());
+
+	}
+
+	public static void main(String[] args) {
+
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+
+			public void run() {
+				GraphicalUI gUI = new GraphicalUI();
+
+				gUI.setVisible(true);
+
+			}
+
+		});
 
 	}
 
