@@ -49,11 +49,29 @@ public class RegistryController extends Controller {
 
 	}
 
-	private void displayValuableDialog(JPanel eventFiringPanel, ValuableDialog valuableDialog, String typOfValuable) {
+	public ValuableDialog determineDialogToBeOpened(String typeOfValuable) {
+
+		switch(typeOfValuable) {
+
+			case "Jewellry":
+				return new JewellryDialog();
+			case "Stock":
+				return new StockDialog();
+			case "Apparatus":
+				return new ApparatusDialog();
+			default:
+				return null;
+
+		}
+	}
+
+	public void displayValuableDialog(JPanel eventFiringPanel, String typeOfValuable) {
+
+		ValuableDialog valuableDialog = determineDialogToBeOpened(typeOfValuable);
 
 		int okOrCancel = JOptionPane.showOptionDialog(eventFiringPanel,
 									 				  valuableDialog, 
-									 				  "Add " + typOfValuable, 
+									 				  "Add " + typeOfValuable, 
 									 				  JOptionPane.OK_CANCEL_OPTION, 
 							 		 				  JOptionPane.QUESTION_MESSAGE, 
 									 				  null, null, null);
@@ -78,54 +96,15 @@ public class RegistryController extends Controller {
 
 	}
 
-	@Override
-	public void handleEvent(ActionEvent event, JPanel eventFiringPanel) {
+	public void showValuables() {
 
-		if(event.getSource() instanceof JComboBox) {
+		getModel().updateObserver();
 
-			JComboBox valuableCategories = (JComboBox) event.getSource();
-			String selectedItem = (String) valuableCategories.getSelectedItem();
+	}
 
-			switch(selectedItem) {
+	public void setSharePricesToZero() {
 
-				case "Jewellry":
-					displayValuableDialog(eventFiringPanel, new JewellryDialog(), selectedItem);
-					break;
-				case "Stock":
-					displayValuableDialog(eventFiringPanel, new StockDialog(), selectedItem);
-					break;
-				case "Apparatus":
-					displayValuableDialog(eventFiringPanel, new ApparatusDialog(), selectedItem);
-					break;
-
-			}
-
-		} else if(event.getSource() instanceof JButton) {
-
-			switch(event.getActionCommand()) {
-
-				case("Visa"):
-					getModel().updateObserver();
-					break;
-				case("Börskrasch"):
-					getTypeCastedModel().setSharePricesToZero();
-					break;
-
-			}
-
-		} else if(event.getSource() instanceof JRadioButton) {
-
-			switch(event.getActionCommand()) {
-
-				case("Namn"):
-					getTypeCastedModel().sortValuablesByName();
-					break;
-				case("Värde"):
-					getTypeCastedModel().sortValuablesByValue();
-
-			}
-
-		}
+		getTypeCastedModel().setSharePricesToZero();
 
 	}
 

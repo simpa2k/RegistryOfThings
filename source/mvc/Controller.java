@@ -19,6 +19,4 @@ public abstract class Controller {
 
 	}
 
-	public abstract void handleEvent(ActionEvent event, JPanel eventFiringPanel);
-
 }

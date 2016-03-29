@@ -54,6 +54,7 @@ public class GraphicalUI extends JFrame implements Observer {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
 			public void run() {
+				
 				GraphicalUI gUI = new GraphicalUI();
 
 				gUI.setVisible(true);

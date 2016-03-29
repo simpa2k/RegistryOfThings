@@ -110,17 +110,18 @@ public class MainContentPane extends JPanel {
 		setColumnAndRow(0, 0);
 		String[] valuableCategories = {"Jewellry", "Stock", "Apparatus"};
 		JComboBox comboBox = new JComboBox(valuableCategories);
-		comboBox.addActionListener( event -> parentFrame.getController().handleEvent(event, this));
+		comboBox.addActionListener( event -> 
+									parentFrame.getController().displayValuableDialog(this, (String) comboBox.getSelectedItem()));
 		bottomRow.add(comboBox, c);
 
 		setColumnAndRow(1, 0);
 		JButton show = new JButton("Visa");
-		show.addActionListener(event -> parentFrame.getController().handleEvent(event, this));
+		show.addActionListener(event -> parentFrame.getController().showValuables());
 		bottomRow.add(show, c);
 
 		setColumnAndRow(2, 0);
 		JButton crash = new JButton("Börskrasch");
-		crash.addActionListener(event -> parentFrame.getController().handleEvent(event, this));
+		crash.addActionListener(event -> parentFrame.getController().setSharePricesToZero());
 		bottomRow.add(crash, c);
 
 		setColumnAndRow(0, 2);
