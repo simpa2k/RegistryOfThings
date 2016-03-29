@@ -18,9 +18,7 @@ public abstract class Valuable {
 
 	protected abstract double calculateValue();
 
-	//Ska inte den här heta calculateValue och vara public? Behöver den någonsin accessas utifrån? Tror inte det,
-	//men det kanske är best practice att göra den public ändå, ur bibliotekssynpunkt? Man kan ju inte förutsäga
-	//alla möjliga implementationer.
+	//Ska inte den här heta calculateValue?
 	public double calculateValueWithTax() {
 
 		double valueWithTax = calculateValue() * 1.25;
