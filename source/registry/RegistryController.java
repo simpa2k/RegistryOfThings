@@ -2,7 +2,6 @@ package registry;
 
 import graphicalUI.*;
 import valuables.*;
-import mvc.*;
 
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -15,18 +14,13 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 
-public class RegistryController extends Controller {
+public class RegistryController {
+
+	RegistryModel model;
 
 	public RegistryController(RegistryModel model) {
 
-		super(model);
-
-	}
-
-	private RegistryModel getTypeCastedModel() {
-
-		//Type casting safe since constructor demands RegistryController
-		return (RegistryModel) getModel();
+		this.model = model;
 
 	}
 
@@ -36,7 +30,7 @@ public class RegistryController extends Controller {
 
 		try {
 
-			getTypeCastedModel().add(newValuable);
+			model.add(newValuable);
 
 		} catch(IllegalArgumentException e) {
 
@@ -86,25 +80,25 @@ public class RegistryController extends Controller {
 
 	public void sortValuablesByName() {
 
-		getTypeCastedModel().sortValuablesByName();
+		model.sortValuablesByName();
 
 	}
 
 	public void sortValuablesByValue() {
 
-		getTypeCastedModel().sortValuablesByValue();
+		model.sortValuablesByValue();
 
 	}
 
 	public void showValuables() {
 
-		getModel().updateObserver();
+		model.updateView();
 
 	}
 
 	public void setSharePricesToZero() {
 
-		getTypeCastedModel().setSharePricesToZero();
+		model.setSharePricesToZero();
 
 	}
 

@@ -2,7 +2,6 @@ package graphicalUI;
 
 import registry.*;
 import valuables.*;
-import observer.*;
 
 import java.util.ArrayList;
 
@@ -27,13 +26,11 @@ import javax.swing.ButtonGroup;
 public class MainContentPane extends JPanel {
 
 	GridBagConstraints c = new GridBagConstraints();
-	GraphicalUI parentFrame;
+	RegistryView parentFrame;
 
 	JTextArea textArea;
-	/*JRadioButton sortByName;
-	JRadioButton sortByValue;*/
 
-	public MainContentPane(GraphicalUI parentFrame) {
+	public MainContentPane(RegistryView parentFrame) {
 
 		setLayout(new GridBagLayout());
 		this.parentFrame = parentFrame;

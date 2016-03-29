@@ -2,15 +2,15 @@ package registry;
 
 import valuables.*;
 import compare.*;
-import mvc.*;
+import graphicalUI.RegistryView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class RegistryModel implements Subject {
+public class RegistryModel {
 
 	private ArrayList<Valuable> valuables = new ArrayList<>();
-	private Observer observer;
+	private RegistryView view;
 
 	public RegistryModel() {
 
@@ -21,17 +21,15 @@ public class RegistryModel implements Subject {
 
 	}
 
-	@Override
-	public void registerObserver(Observer observer) {
+	public void setView(RegistryView view) {
 
-		this.observer = observer;
+		this.view = view;
 
 	}
 
-	@Override
-	public void updateObserver() {
+	public void updateView() {
 
-		observer.update();
+		view.update();
 
 	}
 
@@ -75,7 +73,7 @@ public class RegistryModel implements Subject {
 
 		}
 
-		updateObserver();
+		updateView();
 
 	}
 
@@ -83,7 +81,7 @@ public class RegistryModel implements Subject {
 
 		Collections.sort(valuables, new NameComparator());
 
-		updateObserver();
+		updateView();
 
 	}
 
@@ -97,7 +95,7 @@ public class RegistryModel implements Subject {
 
 		Collections.sort(valuables, new ValueComparator());
 
-		updateObserver();
+		updateView();
 
 	}
 
