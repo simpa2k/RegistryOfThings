@@ -10,6 +10,7 @@ public class Center extends JPanel {
 	public Center() {
 	
 		textArea = new JTextArea();
+		textArea.setEditable(false);
 		JScrollPane scrollPane = new JScrollPane(textArea);
 		scrollPane.setPreferredSize(new Dimension(400, 300));
 		add(scrollPane);
