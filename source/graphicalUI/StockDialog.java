@@ -6,8 +6,6 @@ import javax.swing.JPanel;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 
 public class StockDialog extends ValuableDialog {
 
@@ -16,21 +14,17 @@ public class StockDialog extends ValuableDialog {
 
 	public StockDialog() {
 
-		setColumnAndRow(0, 1);
 		JLabel amount = new JLabel("Antal:");
-		add(amount, c);
+		getMiddleRow().add(amount);
 
-		setColumnAndRow(1, 1);
 		amountInput = new JTextField(10);
-		add(amountInput, c);
+		getMiddleRow().add(amountInput);
 
-		setColumnAndRow(0, 2);
 		JLabel sharePrice = new JLabel("Kurs:");
-		add(sharePrice, c);
+		getBottomRow().add(sharePrice);
 
-		setColumnAndRow(1, 2);
 		sharePriceInput = new JTextField(10);
-		add(sharePriceInput, c);
+		getBottomRow().add(sharePriceInput);
 
 
 	}
@@ -45,7 +39,7 @@ public class StockDialog extends ValuableDialog {
 			int numericAmount = Integer.parseInt(amountInput.getText());
 			double numericSharePrice = Double.parseDouble(sharePriceInput.getText());
 
-			return new Stock(nameInput.getText(), numericAmount, numericSharePrice);
+			return new Stock(getNameInputText(), numericAmount, numericSharePrice);
 
 		} catch(IllegalArgumentException e) {
 

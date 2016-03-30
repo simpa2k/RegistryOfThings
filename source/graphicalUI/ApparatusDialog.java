@@ -6,8 +6,6 @@ import javax.swing.JPanel;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 
 public class ApparatusDialog extends ValuableDialog {
 	
@@ -16,21 +14,17 @@ public class ApparatusDialog extends ValuableDialog {
 
 	public ApparatusDialog() {
 
-		setColumnAndRow(0, 1);
 		JLabel price = new JLabel("Pris:");
-		add(price, c);
+		getMiddleRow().add(price);
 
-		setColumnAndRow(1, 1);
 		purchasePriceInput = new JTextField(10);
-		add(purchasePriceInput, c);
+		getMiddleRow().add(purchasePriceInput);
 
-		setColumnAndRow(0, 2);
 		JLabel wear = new JLabel("Slitage:");
-		add(wear, c);
+		getBottomRow().add(wear);
 
-		setColumnAndRow(1, 2);
 		wearInput = new JTextField(10);
-		add(wearInput, c);
+		getBottomRow().add(wearInput);
 
 	}
 
@@ -44,7 +38,7 @@ public class ApparatusDialog extends ValuableDialog {
 			double numericPurchasePrice = Double.parseDouble(purchasePriceInput.getText());
 			int numericWear = Integer.parseInt(wearInput.getText());
 
-			return new Apparatus(nameInput.getText(), numericPurchasePrice, numericWear);
+			return new Apparatus(getNameInputText(), numericPurchasePrice, numericWear);
 
 		} catch(IllegalArgumentException e) {
 

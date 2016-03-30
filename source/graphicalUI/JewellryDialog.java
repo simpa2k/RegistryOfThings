@@ -6,8 +6,6 @@ import javax.swing.JPanel;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 
@@ -18,22 +16,18 @@ public class JewellryDialog extends ValuableDialog implements ItemListener {
 
 	public JewellryDialog() {
 
-		setColumnAndRow(0, 1);
 		JLabel gems = new JLabel("Stenar:");
-		add(gems, c);
+		getMiddleRow().add(gems);
 
-		setColumnAndRow(1, 1);
 		numberOfGems = new JTextField(10);
-		add(numberOfGems, c);
+		getMiddleRow().add(numberOfGems);
 
-		setColumnAndRow(0, 2);
 		JLabel gold = new JLabel("Av guld:");
-		add(gold, c);
+		getBottomRow().add(gold);
 
-		setColumnAndRow(1, 2);
 		JCheckBox isGold = new JCheckBox();
 		isGold.addItemListener(this);
-		add(isGold, c);
+		getBottomRow().add(isGold);
 
 	}
 
@@ -45,7 +39,7 @@ public class JewellryDialog extends ValuableDialog implements ItemListener {
 			validateNameInput();
 
 			int numericNumberOfGems = Integer.parseInt(numberOfGems.getText());
-			return new Jewellry(nameInput.getText(), numericNumberOfGems, goldBoxChecked);
+			return new Jewellry(getNameInputText(), numericNumberOfGems, goldBoxChecked);
 
 		} catch(IllegalArgumentException e) {
 

@@ -3,38 +3,45 @@ package graphicalUI;
 import valuables.Valuable;
 
 import java.util.HashMap;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JCheckBox;
-
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
+import javax.swing.*;
 
 public abstract class ValuableDialog extends JPanel {
 
-	GridBagConstraints c; 
-	JTextField nameInput;
+	private JTextField nameInput;
+
+	private JPanel topRow;
+	private JPanel middleRow;
+	private JPanel bottomRow;
 
 	public ValuableDialog() {
 
-		setLayout(new GridBagLayout());
-		c = new GridBagConstraints();
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-		setColumnAndRow(0, 0);
+		topRow = new JPanel();
+		middleRow = new JPanel();
+		bottomRow = new JPanel();
+
+		add(topRow);
+		add(middleRow);
+		add(bottomRow);
+
 		JLabel name = new JLabel("Namn:");
-		add(name, c);
+		topRow.add(name);
 
-		setColumnAndRow(1, 0);
 		nameInput = new JTextField(10);
-		add(nameInput, c);
+		topRow.add(nameInput);
 
 	}
 
-	protected void setColumnAndRow(int x, int y) {
+	protected JPanel getMiddleRow() {
 
-		c.gridx = x;
-		c.gridy = y;
+		return middleRow;
+
+	}
+
+	protected JPanel getBottomRow() {
+
+		return bottomRow;
 
 	}
 
@@ -45,6 +52,12 @@ public abstract class ValuableDialog extends JPanel {
 			throw new IllegalArgumentException();
 
 		}
+
+	}
+
+	protected String getNameInputText() {
+
+		return nameInput.getText();
 
 	}
 
