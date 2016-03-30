@@ -11,10 +11,7 @@ import java.awt.*;
 
 public class RegistryView extends JFrame {
 
-	North northPanel;
 	Center centerPanel;
-	East eastPanel;
-	South southPanel;
 
 	RegistryModel model;
 	RegistryController controller;
@@ -28,10 +25,10 @@ public class RegistryView extends JFrame {
 		controller = new RegistryController(model);
 		this.controller = controller;
 
-		northPanel = new North();
+		North northPanel = new North();
 		centerPanel = new Center();
-		eastPanel = new East(this);
-		southPanel = new South(this);
+		East eastPanel = new East(this);
+		South southPanel = new South(this);
 
 		add(northPanel, BorderLayout.NORTH);
 		add(centerPanel, BorderLayout.CENTER);
