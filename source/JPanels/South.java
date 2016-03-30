@@ -1,7 +1,6 @@
 package JPanels;
 
-import graphicalUI.RegistryView;
-
+import mvc.RegistryView;
 import javax.swing.*;
 
 public class South extends JPanel {

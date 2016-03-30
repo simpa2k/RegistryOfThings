@@ -1,6 +1,6 @@
 package JPanels;
 
-import graphicalUI.RegistryView;
+import mvc.RegistryView;
 
 import javax.swing.*;
 import java.awt.*;
