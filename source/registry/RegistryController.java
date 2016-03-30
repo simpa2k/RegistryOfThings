@@ -70,7 +70,7 @@ public class RegistryController {
 							 		 				  JOptionPane.QUESTION_MESSAGE, 
 									 				  null, null, null);
 
-		if(okOrCancel == 0) {
+		if(okOrCancel == JOptionPane.OK_OPTION) {
 
 			getNewValuable(valuableDialog);
 
