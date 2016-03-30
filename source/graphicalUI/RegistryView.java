@@ -4,14 +4,13 @@ import registry.*;
 import valuables.*;
 import JPanels.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.*;
 
 public class RegistryView extends JFrame {
 
-	Center centerPanel;
+	JTextArea textArea;
 
 	RegistryModel model;
 	RegistryController controller;
@@ -25,21 +24,24 @@ public class RegistryView extends JFrame {
 		controller = new RegistryController(model);
 		this.controller = controller;
 
-		North northPanel = new North();
-		centerPanel = new Center();
 		East eastPanel = new East(this);
 		South southPanel = new South(this);
 
-		add(northPanel, BorderLayout.NORTH);
-		add(centerPanel, BorderLayout.CENTER);
+		JLabel heading = new JLabel("Värdesaker");
+		add(heading, BorderLayout. NORTH);
+
+		textArea = new JTextArea();
+		textArea.setEditable(false);
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		
+		add(scrollPane, BorderLayout.CENTER);
+
 		add(eastPanel, BorderLayout.EAST);
 		add(southPanel, BorderLayout.SOUTH);
 
 		setName("Sakregister");
 		setSize(500, 500);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-		pack();
 
 	}
 
@@ -51,7 +53,7 @@ public class RegistryView extends JFrame {
 
 	public void update() {
 
-		centerPanel.updateTextArea(model.getValuables());
+		textArea.setText(model.getValuables());
 
 	}
 
