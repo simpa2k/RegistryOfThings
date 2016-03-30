@@ -2,14 +2,19 @@ package graphicalUI;
 
 import registry.*;
 import valuables.*;
+import JPanels.*;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
+import java.awt.*;
 
 public class RegistryView extends JFrame {
 
-	MainContentPane mainContentPane;
+	North northPanel;
+	Center centerPanel;
+	East eastPanel;
+	South southPanel;
 
 	RegistryModel model;
 	RegistryController controller;
@@ -23,13 +28,19 @@ public class RegistryView extends JFrame {
 		controller = new RegistryController(model);
 		this.controller = controller;
 
-		mainContentPane = new MainContentPane(this);
+		northPanel = new North();
+		centerPanel = new Center();
+		eastPanel = new East(this);
+		southPanel = new South(this);
+
+		add(northPanel, BorderLayout.NORTH);
+		add(centerPanel, BorderLayout.CENTER);
+		add(eastPanel, BorderLayout.EAST);
+		add(southPanel, BorderLayout.SOUTH);
 
 		setName("Sakregister");
 		setSize(500, 500);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-		setContentPane(mainContentPane);
 
 		pack();
 
@@ -43,7 +54,7 @@ public class RegistryView extends JFrame {
 
 	public void update() {
 
-		mainContentPane.updateTextArea(model.getValuables());
+		centerPanel.updateTextArea(model.getValuables());
 
 	}
 
