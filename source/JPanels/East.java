@@ -12,24 +12,30 @@ public class East extends JPanel {
 	public East(RegistryView parentFrame) {
 
 		this.parentFrame = parentFrame;
+		
+		setLayout(new BorderLayout());
 
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		JPanel panel = new JPanel();
+
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
 		JLabel sorting = new JLabel("Sortering");
-		add(sorting);
+		panel.add(sorting);
 
 		JRadioButton sortByName = new JRadioButton("Namn");
-		add(sortByName);
+		panel.add(sortByName);
 		sortByName.addActionListener(event -> parentFrame.getController().sortValuablesByName());
 		sortByName.setSelected(true);
 
 		JRadioButton sortByValue = new JRadioButton("Värde");
-		add(sortByValue);
+		panel.add(sortByValue);
 		sortByValue.addActionListener(event -> parentFrame.getController().sortValuablesByValue());
 
 		ButtonGroup buttonGroup = new ButtonGroup();
 		buttonGroup.add(sortByName);
 		buttonGroup.add(sortByValue);
+
+		add(panel, BorderLayout.SOUTH);
 
 	}
 }

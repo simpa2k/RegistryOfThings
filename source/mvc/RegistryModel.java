@@ -26,6 +26,7 @@ public class RegistryModel {
 
 	}
 
+	//behövs den här metoden?
 	public void updateView() {
 
 		view.update();
@@ -47,7 +48,7 @@ public class RegistryModel {
 	}
 
 	public String getValuables() {
-
+		//använd append i viewen istället för att skapa en sammanhängande sträng här
 		String valuableList = "";
 
 		for(Valuable valuable : valuables) {
@@ -76,6 +77,11 @@ public class RegistryModel {
 
 	}
 
+	//ska sorteringsfunktioner verkligen vara separerade från getValuables?
+	//är det inte bättre att bara kolla vilken radiobutton som är vald när
+	//visa-knappen trycks ned? Viewen skulle kunna skicka med en Comparator
+	//som argument till getValuables baserat på vilken radiobutton som är vald.
+	//Skulle lösa problemet med vilken sortering som ska gälla i början.
 	public void sortValuablesByName() {
 
 		Collections.sort(valuables, new NameComparator());

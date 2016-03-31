@@ -27,6 +27,7 @@ public class RegistryView extends JFrame {
 		South southPanel = new South(this);
 
 		JLabel heading = new JLabel("Värdesaker");
+		heading.setHorizontalAlignment(JLabel.CENTER);
 		add(heading, BorderLayout. NORTH);
 
 		textArea = new JTextArea();

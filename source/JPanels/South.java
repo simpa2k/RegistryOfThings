@@ -11,6 +11,9 @@ public class South extends JPanel {
 
 		this.parentFrame = parentFrame;
 
+		JLabel newValuable = new JLabel("Nytt:");
+		add(newValuable);
+
 		String[] valuableCategories = {"Jewellry", "Stock", "Apparatus"};
 		JComboBox comboBox = new JComboBox(valuableCategories);
 		comboBox.addActionListener( event -> 

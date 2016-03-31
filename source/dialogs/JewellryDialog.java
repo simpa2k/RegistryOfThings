@@ -29,7 +29,7 @@ public class JewellryDialog extends ValuableDialog implements ItemListener {
 
 	@Override
 	public Jewellry getNewValuable() {
-
+		//det här bör göras där dialogen skapas, behövs det här överhuvudtaget? Det propagerar väl till controllern?
 		try {
 		
 			validateNameInput();

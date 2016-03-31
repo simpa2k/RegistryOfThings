@@ -37,6 +37,8 @@ public class RegistryController {
 
 	}
 
+	//Går det att skriva den här så att det går att lägga till nya Valuables
+	//och ValuableDialogs? Tror det finns patterns för det.
 	private ValuableDialog determineDialogToBeOpened(String typeOfValuable) {
 
 		switch(typeOfValuable) {

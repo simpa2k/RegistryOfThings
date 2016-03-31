@@ -28,7 +28,7 @@ public class StockDialog extends ValuableDialog {
 
 	@Override
 	public Stock getNewValuable() {
-
+		//det här bör göras där dialogen skapas, behövs det här överhuvudtaget? Det propagerar väl till controllern?
 		try {
 			
 			validateNameInput();

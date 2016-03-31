@@ -27,7 +27,7 @@ public class ApparatusDialog extends ValuableDialog {
 
 	@Override
 	public Apparatus getNewValuable() {
-
+		//det här bör göras där dialogen skapas, behövs det här överhuvudtaget? Det propagerar väl till controllern?
 		try {
 		
 			validateNameInput();
