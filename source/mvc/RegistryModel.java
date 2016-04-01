@@ -3,8 +3,7 @@ package mvc;
 import valuables.*;
 import compare.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 public class RegistryModel {
 
@@ -47,8 +46,11 @@ public class RegistryModel {
 
 	}
 
-	public String getValuables() {
+	public String getValuables(Comparator<Valuable> comparator) {
 		//använd append i viewen istället för att skapa en sammanhängande sträng här
+		
+		Collections.sort(valuables, comparator);
+
 		String valuableList = "";
 
 		for(Valuable valuable : valuables) {
@@ -82,26 +84,4 @@ public class RegistryModel {
 	//visa-knappen trycks ned? Viewen skulle kunna skicka med en Comparator
 	//som argument till getValuables baserat på vilken radiobutton som är vald.
 	//Skulle lösa problemet med vilken sortering som ska gälla i början.
-	public void sortValuablesByName() {
-
-		Collections.sort(valuables, new NameComparator());
-
-		updateView();
-
-	}
-
-	public void sortValuablesByNameWithoutUpdate() {
-
-		Collections.sort(valuables, new NameComparator());
-
-	}
-
-	public void sortValuablesByValue() {
-
-		Collections.sort(valuables, new ValueComparator());
-
-		updateView();
-
-	}
-
 }

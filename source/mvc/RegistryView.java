@@ -7,12 +7,16 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
+import java.util.Comparator;
+
 public class RegistryView extends JFrame {
 
 	JTextArea textArea;
 
 	RegistryModel model;
 	RegistryController controller;
+
+	East eastPanel;
 
 	public RegistryView() {
 
@@ -23,7 +27,7 @@ public class RegistryView extends JFrame {
 		controller = new RegistryController(model);
 		this.controller = controller;
 
-		East eastPanel = new East(this);
+		eastPanel = new East(this);
 		South southPanel = new South(this);
 
 		JLabel heading = new JLabel("Värdesaker");
@@ -53,7 +57,10 @@ public class RegistryView extends JFrame {
 
 	public void update() {
 
-		textArea.setText(model.getValuables());
+		Comparator valuableComparator = eastPanel.getSelectedComparator();
+		String valuables = model.getValuables(valuableComparator);
+
+		textArea.setText(valuables);
 
 	}
 

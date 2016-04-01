@@ -1,13 +1,17 @@
 package JPanels;
 
 import mvc.RegistryView;
+import compare.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Comparator;
 
 public class East extends JPanel {
 
 	private RegistryView parentFrame;
+
+	JRadioButton sortByName;
 
 	public East(RegistryView parentFrame) {
 
@@ -22,20 +26,26 @@ public class East extends JPanel {
 		JLabel sorting = new JLabel("Sortering");
 		panel.add(sorting);
 
-		JRadioButton sortByName = new JRadioButton("Namn");
+		sortByName = new JRadioButton("Namn");
 		panel.add(sortByName);
-		sortByName.addActionListener(event -> parentFrame.getController().sortValuablesByName());
+		sortByName.addActionListener(event -> parentFrame.getController().showValuables());
 		sortByName.setSelected(true);
 
 		JRadioButton sortByValue = new JRadioButton("Värde");
 		panel.add(sortByValue);
-		sortByValue.addActionListener(event -> parentFrame.getController().sortValuablesByValue());
+		sortByValue.addActionListener(event -> parentFrame.getController().showValuables());
 
 		ButtonGroup buttonGroup = new ButtonGroup();
 		buttonGroup.add(sortByName);
 		buttonGroup.add(sortByValue);
 
 		add(panel, BorderLayout.SOUTH);
+
+	}
+
+	public Comparator getSelectedComparator() {
+
+		return sortByName.isSelected() ? new NameComparator() : new ValueComparator();
 
 	}
 }

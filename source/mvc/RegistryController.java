@@ -73,19 +73,7 @@ public class RegistryController {
 		}
 
 	}
-
-	public void sortValuablesByName() {
-
-		model.sortValuablesByName();
-
-	}
-
-	public void sortValuablesByValue() {
-
-		model.sortValuablesByValue();
-
-	}
-
+	
 	public void showValuables() {
 
 		model.updateView();
