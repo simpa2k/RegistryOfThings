@@ -79,9 +79,4 @@ public class RegistryModel {
 
 	}
 
-	//ska sorteringsfunktioner verkligen vara separerade från getValuables?
-	//är det inte bättre att bara kolla vilken radiobutton som är vald när
-	//visa-knappen trycks ned? Viewen skulle kunna skicka med en Comparator
-	//som argument till getValuables baserat på vilken radiobutton som är vald.
-	//Skulle lösa problemet med vilken sortering som ska gälla i början.
 }
