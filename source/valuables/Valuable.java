@@ -18,7 +18,6 @@ public abstract class Valuable {
 
 	protected abstract double calculateValue();
 
-	//Ska inte den här heta calculateValue?
 	public double calculateValueWithTax() {
 
 		double valueWithTax = calculateValue() * 1.25;
