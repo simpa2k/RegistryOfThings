@@ -43,7 +43,7 @@ public class RegistryView extends JFrame {
 
 	}
 
-	public void setText(String text) {
+	protected void setText(String text) {
 
 		textArea.setText(text);
 

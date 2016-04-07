@@ -37,7 +37,7 @@ public class SortingPanel extends JPanel {
 
 	}
 
-	public Comparator getSelectedComparator() {
+	protected Comparator getSelectedComparator() {
 
 		return sortByName.isSelected() ? new NameComparator() : new ValueComparator();
 

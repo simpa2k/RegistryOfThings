@@ -56,7 +56,7 @@ public class RegistryController {
 		}
 	}
 
-	public void displayValuableDialog(JPanel eventFiringPanel, String typeOfValuable) {
+	protected void displayValuableDialog(JPanel eventFiringPanel, String typeOfValuable) {
 
 		ValuableDialog valuableDialog = determineDialogToBeOpened(typeOfValuable);
 
@@ -75,7 +75,7 @@ public class RegistryController {
 
 	}
 	
-	public void showValuables(Comparator selectedComparator) {
+	protected void showValuables(Comparator selectedComparator) {
 
 		String valuables = model.getValuables(selectedComparator);
 
@@ -83,7 +83,7 @@ public class RegistryController {
 
 	}
 
-	public void setSharePricesToZero(Comparator selectedComparator) {
+	protected void setSharePricesToZero(Comparator selectedComparator) {
 
 		model.setSharePricesToZero();
 		showValuables(selectedComparator);
