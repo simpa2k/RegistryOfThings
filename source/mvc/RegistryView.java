@@ -49,9 +49,15 @@ public class RegistryView extends JFrame {
 
 	}
 
+	private Comparator getSelectedComparator() {
+
+			return sortingPanel.sortByName.isSelected() ? new NameComparator() : new ValueComparator();
+
+		}
+
 	private void showValuables() {
 
-		controller.showValuables(sortingPanel.getSelectedComparator());		
+		controller.showValuables(getSelectedComparator());		
 
 	}
 
@@ -86,12 +92,6 @@ public class RegistryView extends JFrame {
 
 		}
 
-		private Comparator getSelectedComparator() {
-
-			return sortByName.isSelected() ? new NameComparator() : new ValueComparator();
-
-		}
-
 	}
 
 	class ControlPanel extends JPanel {
@@ -111,7 +111,7 @@ public class RegistryView extends JFrame {
 			add(show);
 
 			JButton crash = new JButton("Stock market crash");
-			crash.addActionListener( event -> controller.setSharePricesToZero(sortingPanel.getSelectedComparator()) );
+			crash.addActionListener( event -> controller.setSharePricesToZero(getSelectedComparator()) );
 			add(crash);
 
 		}
