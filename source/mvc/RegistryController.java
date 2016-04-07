@@ -75,15 +75,6 @@ public class RegistryController {
 		}
 
 	}
-
-	private String getValuables() {
-
-		Comparator valuableComparator = view.getSelectedComparator();
-		String valuables = model.getValuables(valuableComparator);
-
-		return valuables;
-
-	}
 	
 	public void showValuables(Comparator selectedComparator) {
 
@@ -93,10 +84,10 @@ public class RegistryController {
 
 	}
 
-	public void setSharePricesToZero() {
+	public void setSharePricesToZero(Comparator selectedComparator) {
 
 		model.setSharePricesToZero();
-		view.setText(getValuables());
+		showValuables(selectedComparator);
 
 	}
 
