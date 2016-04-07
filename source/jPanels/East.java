@@ -26,12 +26,12 @@ public class East extends JPanel {
 
 		sortByName = new JRadioButton("Name");
 		panel.add(sortByName);
-		sortByName.addActionListener(event -> parentFrame.getController().showValuables());
+		sortByName.addActionListener(event -> parentFrame.showValuables());
 		sortByName.setSelected(true);
 
 		JRadioButton sortByValue = new JRadioButton("Value");
 		panel.add(sortByValue);
-		sortByValue.addActionListener(event -> parentFrame.getController().showValuables());
+		sortByValue.addActionListener(event -> parentFrame.showValuables());
 
 		ButtonGroup buttonGroup = new ButtonGroup();
 		buttonGroup.add(sortByName);

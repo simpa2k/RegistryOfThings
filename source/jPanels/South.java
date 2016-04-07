@@ -21,7 +21,7 @@ public class South extends JPanel {
 		add(comboBox);
 
 		JButton show = new JButton("Show");
-		show.addActionListener(event -> parentFrame.getController().showValuables());
+		show.addActionListener(event -> parentFrame.showValuables());
 		add(show);
 
 		JButton crash = new JButton("Stock market crash");

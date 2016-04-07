@@ -2,8 +2,10 @@ package mvc;
 
 import dialogs.*;
 import valuables.*;
+import compare.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.awt.event.*;
 
 import javax.swing.*;
@@ -11,10 +13,12 @@ import javax.swing.*;
 public class RegistryController {
 
 	private RegistryModel model;
+	private RegistryView view;
 
-	public RegistryController(RegistryModel model) {
+	public RegistryController(RegistryModel model, RegistryView view) {
 
 		this.model = model;
+		this.view = view;
 
 	}
 
@@ -71,16 +75,28 @@ public class RegistryController {
 		}
 
 	}
-	
-	public void showValuables() {
 
-		model.updateView();
+	private String getValuables() {
+
+		Comparator valuableComparator = view.getSelectedComparator();
+		String valuables = model.getValuables(valuableComparator);
+
+		return valuables;
+
+	}
+	
+	public void showValuables(Comparator selectedComparator) {
+
+		String valuables = model.getValuables(selectedComparator);
+
+		view.setText(valuables);
 
 	}
 
 	public void setSharePricesToZero() {
 
 		model.setSharePricesToZero();
+		view.setText(getValuables());
 
 	}
 

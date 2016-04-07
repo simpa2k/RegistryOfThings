@@ -2,6 +2,7 @@ package mvc;
 
 import valuables.*;
 import jPanels.*;
+import compare.*;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -22,9 +23,8 @@ public class RegistryView extends JFrame {
 
 		model = new RegistryModel();
 		this.model = model;
-		model.setView(this);
 
-		controller = new RegistryController(model);
+		controller = new RegistryController(model, this);
 		this.controller = controller;
 
 		eastPanel = new East(this);
@@ -55,12 +55,21 @@ public class RegistryView extends JFrame {
 
 	}
 
-	public void update() {
+	public void showValuables() {
 
-		Comparator valuableComparator = eastPanel.getSelectedComparator();
-		String valuables = model.getValuables(valuableComparator);
+		controller.showValuables(eastPanel.getSelectedComparator());
 
-		textArea.setText(valuables);
+	}
+
+	public Comparator getSelectedComparator() {
+
+		return eastPanel.getSelectedComparator();
+
+	}
+
+	public void setText(String text) {
+
+		textArea.setText(text);
 
 	}
 
