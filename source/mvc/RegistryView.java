@@ -2,7 +2,6 @@ package mvc;
 
 import valuables.*;
 import compare.*;
-import jPanels.*;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -50,25 +49,25 @@ public class RegistryView extends JFrame {
 
 	}
 
-	public void showValuables(Comparator comparator) {
+	protected void showValuables(Comparator comparator) {
 
 		controller.showValuables(comparator);		
 
 	}
 
-	public void showValuables() {
+	protected void showValuables() {
 
 		controller.showValuables(sortingPanel.getSelectedComparator());		
 
 	}
 
-	public void displayValuableDialog(JPanel eventFiringPanel, String selectedItem) {
+	protected void displayValuableDialog(JPanel eventFiringPanel, String selectedItem) {
 
 		controller.displayValuableDialog(eventFiringPanel, selectedItem);
 
 	}
 
-	public void setSharePricesToZero() {
+	protected void setSharePricesToZero() {
 
 		controller.setSharePricesToZero(sortingPanel.getSelectedComparator());
 

@@ -1,6 +1,5 @@
-package jPanels;
+package mvc;
 
-import mvc.RegistryView;
 import javax.swing.*;
 
 public class ControlPanel extends JPanel {

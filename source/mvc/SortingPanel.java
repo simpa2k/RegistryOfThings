@@ -1,6 +1,5 @@
-package jPanels;
+package mvc;
 
-import mvc.RegistryView;
 import compare.*;
 
 import java.util.Comparator;
