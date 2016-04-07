@@ -43,7 +43,7 @@ public class RegistryView extends JFrame {
 
 	}
 
-	public void setText(String text) {
+	protected void setText(String text) {
 
 		textArea.setText(text);
 
@@ -61,7 +61,7 @@ public class RegistryView extends JFrame {
 
 	}
 
-	class SortingPanel extends JPanel {
+	private class SortingPanel extends JPanel {
 
 		private JRadioButton sortByName;
 
@@ -94,7 +94,7 @@ public class RegistryView extends JFrame {
 
 	}
 
-	class ControlPanel extends JPanel {
+	private class ControlPanel extends JPanel {
 
 		public ControlPanel() {
 

@@ -18,13 +18,13 @@ public class RegistryModel {
 
 	}
 
-	public void add(Valuable valuable) {
+	protected void add(Valuable valuable) {
 
 		valuables.add(valuable);
 
 	}
 
-	public String getValuables(Comparator<Valuable> comparator) {
+	protected String getValuables(Comparator<Valuable> comparator) {
 		
 		Collections.sort(valuables, comparator);
 
@@ -40,7 +40,7 @@ public class RegistryModel {
 
 	}
 
-	public void setSharePricesToZero() {
+	protected void setSharePricesToZero() {
 
 		for(Valuable valuable : valuables) {
 
