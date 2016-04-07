@@ -9,7 +9,7 @@ public class Main {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
 			public void run() {
-				
+			
 				RegistryView view = new RegistryView();
 
 				view.setVisible(true);
