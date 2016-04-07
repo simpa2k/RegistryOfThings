@@ -54,6 +54,12 @@ public class RegistryView extends JFrame {
 
 	}
 
+	private void showValuables() {
+
+		controller.showValuables(sortingPanel.getSelectedComparator());		
+
+	}
+
 	class SortingPanel extends JPanel {
 
 		private JRadioButton sortByName;
@@ -70,12 +76,12 @@ public class RegistryView extends JFrame {
 
 			sortByName = new JRadioButton("Name");
 			panel.add(sortByName);
-			sortByName.addActionListener(new ShowValuablesListener());
+			sortByName.addActionListener(event -> showValuables());
 			sortByName.setSelected(true);
 
 			JRadioButton sortByValue = new JRadioButton("Value");
 			panel.add(sortByValue);
-			sortByValue.addActionListener(new ShowValuablesListener());
+			sortByValue.addActionListener(event -> showValuables());
 
 			ButtonGroup buttonGroup = new ButtonGroup();
 			buttonGroup.add(sortByName);
@@ -85,7 +91,7 @@ public class RegistryView extends JFrame {
 
 		}
 
-		protected Comparator getSelectedComparator() {
+		private Comparator getSelectedComparator() {
 
 			return sortByName.isSelected() ? new NameComparator() : new ValueComparator();
 
@@ -106,23 +112,12 @@ public class RegistryView extends JFrame {
 			add(comboBox);
 
 			JButton show = new JButton("Show");
-			show.addActionListener(new ShowValuablesListener());
+			show.addActionListener(event -> showValuables());
 			add(show);
 
 			JButton crash = new JButton("Stock market crash");
-			crash.addActionListener(event -> controller.setSharePricesToZero(sortingPanel.getSelectedComparator()));
+			crash.addActionListener(event -> showValuables());
 			add(crash);
-
-		}
-
-	}
-
-	class ShowValuablesListener implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-
-			controller.showValuables(sortingPanel.getSelectedComparator());
 
 		}
 
