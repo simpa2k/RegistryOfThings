@@ -15,9 +15,9 @@ public class RegistryController {
 	private RegistryModel model;
 	private RegistryView view;
 
-	public RegistryController(RegistryModel model, RegistryView view) {
+	public RegistryController(RegistryView view) {
 
-		this.model = model;
+		this.model = new RegistryModel();
 		this.view = view;
 
 	}

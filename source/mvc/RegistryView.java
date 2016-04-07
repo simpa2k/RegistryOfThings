@@ -12,18 +12,13 @@ import java.util.Comparator;
 public class RegistryView extends JFrame {
 
 	private JTextArea textArea;
-
-	private RegistryModel model;
-	private RegistryController controller;
-
 	private SortingPanel sortingPanel;
+
+	private RegistryController controller;
 
 	public RegistryView() {
 
-		model = new RegistryModel();
-		this.model = model;
-
-		controller = new RegistryController(model, this);
+		controller = new RegistryController(this);
 		this.controller = controller;
 
 		sortingPanel = new SortingPanel();
@@ -108,7 +103,7 @@ public class RegistryView extends JFrame {
 
 			String[] valuableCategories = {"Jewellry", "Stock", "Apparatus"};
 			JComboBox comboBox = new JComboBox(valuableCategories);
-			comboBox.addActionListener( event -> controller.displayValuableDialog(this, (String) comboBox.getSelectedItem()));
+			comboBox.addActionListener( event -> controller.displayValuableDialog(this, (String) comboBox.getSelectedItem()) );
 			add(comboBox);
 
 			JButton show = new JButton("Show");
@@ -116,7 +111,7 @@ public class RegistryView extends JFrame {
 			add(show);
 
 			JButton crash = new JButton("Stock market crash");
-			crash.addActionListener(event -> showValuables());
+			crash.addActionListener( event -> controller.setSharePricesToZero(sortingPanel.getSelectedComparator()) );
 			add(crash);
 
 		}
