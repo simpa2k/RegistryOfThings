@@ -1,7 +1,7 @@
 package mvc;
 
 import valuables.*;
-import JPanels.*;
+import jPanels.*;
 
 import javax.swing.*;
 import java.awt.event.*;
