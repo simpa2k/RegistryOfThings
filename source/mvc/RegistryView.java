@@ -2,6 +2,7 @@ package mvc;
 
 import valuables.*;
 import compare.*;
+import jPanels.*;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -21,8 +22,8 @@ public class RegistryView extends JFrame {
 		controller = new RegistryController(this);
 		this.controller = controller;
 
-		sortingPanel = new SortingPanel();
-		ControlPanel controlPanel = new ControlPanel();
+		sortingPanel = new SortingPanel(this);
+		ControlPanel controlPanel = new ControlPanel(this);
 
 		JLabel heading = new JLabel("Valuables");
 		heading.setHorizontalAlignment(JLabel.CENTER);
@@ -49,72 +50,27 @@ public class RegistryView extends JFrame {
 
 	}
 
-	private void showValuables() {
+	public void showValuables(Comparator comparator) {
+
+		controller.showValuables(comparator);		
+
+	}
+
+	public void showValuables() {
 
 		controller.showValuables(sortingPanel.getSelectedComparator());		
 
 	}
 
-	class SortingPanel extends JPanel {
+	public void displayValuableDialog(JPanel eventFiringPanel, String selectedItem) {
 
-		private JRadioButton sortByName;
-
-		public SortingPanel() {
-			
-			setLayout(new BorderLayout());
-
-			JPanel panel = new JPanel();
-			panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-
-			JLabel sorting = new JLabel("Sorting");
-			panel.add(sorting);
-
-			sortByName = new JRadioButton("Name");
-			panel.add(sortByName);
-			sortByName.addActionListener(event -> showValuables());
-			sortByName.setSelected(true);
-
-			JRadioButton sortByValue = new JRadioButton("Value");
-			panel.add(sortByValue);
-			sortByValue.addActionListener(event -> showValuables());
-
-			ButtonGroup buttonGroup = new ButtonGroup();
-			buttonGroup.add(sortByName);
-			buttonGroup.add(sortByValue);
-
-			add(panel, BorderLayout.SOUTH);
-
-		}
-
-		private Comparator getSelectedComparator() {
-
-			return sortByName.isSelected() ? new NameComparator() : new ValueComparator();
-
-		}
+		controller.displayValuableDialog(eventFiringPanel, selectedItem);
 
 	}
 
-	class ControlPanel extends JPanel {
+	public void setSharePricesToZero() {
 
-		public ControlPanel() {
-
-			JLabel newValuable = new JLabel("New:");
-			add(newValuable);
-
-			String[] valuableCategories = {"Jewellry", "Stock", "Apparatus"};
-			JComboBox comboBox = new JComboBox(valuableCategories);
-			comboBox.addActionListener( event -> controller.displayValuableDialog(this, (String) comboBox.getSelectedItem()) );
-			add(comboBox);
-
-			JButton show = new JButton("Show");
-			show.addActionListener(event -> showValuables());
-			add(show);
-
-			JButton crash = new JButton("Stock market crash");
-			crash.addActionListener( event -> controller.setSharePricesToZero(sortingPanel.getSelectedComparator()) );
-			add(crash);
-
-		}
+		controller.setSharePricesToZero(sortingPanel.getSelectedComparator());
 
 	}
 
