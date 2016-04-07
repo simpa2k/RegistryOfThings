@@ -24,7 +24,7 @@ public class RegistryView extends JFrame {
 		sortingPanel = new SortingPanel();
 		ControlPanel controlPanel = new ControlPanel();
 
-		JLabel heading = new JLabel("Värdesaker");
+		JLabel heading = new JLabel("Valuables");
 		heading.setHorizontalAlignment(JLabel.CENTER);
 		add(heading, BorderLayout. NORTH);
 

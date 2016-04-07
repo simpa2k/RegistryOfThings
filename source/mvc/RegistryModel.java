@@ -20,20 +20,11 @@ public class RegistryModel {
 
 	public void add(Valuable valuable) {
 
-		if(valuable == null) {
-			
-			throw new IllegalArgumentException();
-
-		} else {
-
-			valuables.add(valuable);
-
-		}
+		valuables.add(valuable);
 
 	}
 
 	public String getValuables(Comparator<Valuable> comparator) {
-		//använd append i viewen istället för att skapa en sammanhängande sträng här
 		
 		Collections.sort(valuables, comparator);
 

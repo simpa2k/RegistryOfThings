@@ -23,7 +23,7 @@ public abstract class ValuableDialog extends JPanel {
 		add(middleRow);
 		add(bottomRow);
 
-		JLabel name = new JLabel("Namn:");
+		JLabel name = new JLabel("Name:");
 		topRow.add(name);
 
 		nameInput = new JTextField(10);

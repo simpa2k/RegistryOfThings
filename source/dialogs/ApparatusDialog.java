@@ -11,13 +11,13 @@ public class ApparatusDialog extends ValuableDialog {
 
 	public ApparatusDialog() {
 
-		JLabel price = new JLabel("Pris:");
+		JLabel price = new JLabel("Price:");
 		getMiddleRow().add(price);
 
 		purchasePriceInput = new JTextField(10);
 		getMiddleRow().add(purchasePriceInput);
 
-		JLabel wear = new JLabel("Slitage:");
+		JLabel wear = new JLabel("Wear:");
 		getBottomRow().add(wear);
 
 		wearInput = new JTextField(10);
@@ -27,21 +27,13 @@ public class ApparatusDialog extends ValuableDialog {
 
 	@Override
 	public Apparatus getNewValuable() {
-		//det här bör göras där dialogen skapas, behövs det här överhuvudtaget? Det propagerar väl till controllern?
-		try {
 		
-			validateNameInput();
+		validateNameInput();
 
-			double numericPurchasePrice = Double.parseDouble(purchasePriceInput.getText());
-			int numericWear = Integer.parseInt(wearInput.getText());
+		double numericPurchasePrice = Double.parseDouble(purchasePriceInput.getText());
+		int numericWear = Integer.parseInt(wearInput.getText());
 
-			return new Apparatus(getNameInputText(), numericPurchasePrice, numericWear);
-
-		} catch(IllegalArgumentException e) {
-
-			return null; //Throwa nytt exception här istället?
-
-		}
+		return new Apparatus(getNameInputText(), numericPurchasePrice, numericWear);
 
 	}
 

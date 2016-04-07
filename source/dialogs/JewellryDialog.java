@@ -12,13 +12,13 @@ public class JewellryDialog extends ValuableDialog implements ItemListener {
 
 	public JewellryDialog() {
 
-		JLabel gems = new JLabel("Stenar:");
+		JLabel gems = new JLabel("Gems:");
 		getMiddleRow().add(gems);
 
 		numberOfGems = new JTextField(10);
 		getMiddleRow().add(numberOfGems);
 
-		JLabel gold = new JLabel("Av guld:");
+		JLabel gold = new JLabel("Gold:");
 		getBottomRow().add(gold);
 
 		JCheckBox isGold = new JCheckBox();
@@ -29,19 +29,11 @@ public class JewellryDialog extends ValuableDialog implements ItemListener {
 
 	@Override
 	public Jewellry getNewValuable() {
-		//det här bör göras där dialogen skapas, behövs det här överhuvudtaget? Det propagerar väl till controllern?
-		try {
 		
-			validateNameInput();
+		validateNameInput();
 
-			int numericNumberOfGems = Integer.parseInt(numberOfGems.getText());
-			return new Jewellry(getNameInputText(), numericNumberOfGems, goldBoxChecked);
-
-		} catch(IllegalArgumentException e) {
-
-			return null; //Throwa nytt exception här istället?
-
-		}
+		int numericNumberOfGems = Integer.parseInt(numberOfGems.getText());
+		return new Jewellry(getNameInputText(), numericNumberOfGems, goldBoxChecked);
 
 	}
 

@@ -24,17 +24,16 @@ public class RegistryController {
 
 	private void getNewValuable(ValuableDialog valuableDialog) {
 
-		Valuable newValuable = valuableDialog.getNewValuable();
-
 		try {
 
+			Valuable newValuable = valuableDialog.getNewValuable();
 			model.add(newValuable);
 
 		} catch(IllegalArgumentException e) {
 
 			JOptionPane.showMessageDialog(valuableDialog,
-										  "Fel inmatning!",
-										  "Fel!",
+										  "Invalid input!",
+										  "Error",
 										  JOptionPane.ERROR_MESSAGE);
 
 		}
