@@ -45,7 +45,7 @@ public abstract class ValuableDialog extends JPanel {
 
 	protected void validateNameInput() {
 
-		if(nameInput.getText().matches("\\d+")) {
+		if(nameInput.getText().matches("\\d+") || nameInput.getText().isEmpty()) {
 
 			throw new IllegalArgumentException();
 

@@ -8,7 +8,6 @@ import java.util.*;
 public class RegistryModel {
 
 	private ArrayList<Valuable> valuables = new ArrayList<>();
-	private RegistryView view;
 
 	public RegistryModel() {
 
@@ -16,19 +15,6 @@ public class RegistryModel {
 		valuables.add(new Stock("Alfa Laval", 120, 169.1));
 		valuables.add(new Stock("Ericsson", 100, 1300.0));
 		valuables.add(new Apparatus("TV", 3000.0, 3));
-
-	}
-
-	public void setView(RegistryView view) {
-
-		this.view = view;
-
-	}
-
-	//behövs den här metoden?
-	public void updateView() {
-
-		view.update();
 
 	}
 
@@ -74,8 +60,6 @@ public class RegistryModel {
 			}
 
 		}
-
-		updateView();
 
 	}
 

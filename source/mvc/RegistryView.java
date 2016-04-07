@@ -1,7 +1,7 @@
 package mvc;
 
 import valuables.*;
-import jPanels.*;
+import compare.*;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -12,23 +12,17 @@ import java.util.Comparator;
 public class RegistryView extends JFrame {
 
 	private JTextArea textArea;
+	private SortingPanel sortingPanel;
 
-	private RegistryModel model;
 	private RegistryController controller;
-
-	private East eastPanel;
 
 	public RegistryView() {
 
-		model = new RegistryModel();
-		this.model = model;
-		model.setView(this);
-
-		controller = new RegistryController(model);
+		controller = new RegistryController(this);
 		this.controller = controller;
 
-		eastPanel = new East(this);
-		South southPanel = new South(this);
+		sortingPanel = new SortingPanel();
+		ControlPanel controlPanel = new ControlPanel();
 
 		JLabel heading = new JLabel("Värdesaker");
 		heading.setHorizontalAlignment(JLabel.CENTER);
@@ -40,8 +34,8 @@ public class RegistryView extends JFrame {
 		
 		add(scrollPane, BorderLayout.CENTER);
 
-		add(eastPanel, BorderLayout.EAST);
-		add(southPanel, BorderLayout.SOUTH);
+		add(sortingPanel, BorderLayout.EAST);
+		add(controlPanel, BorderLayout.SOUTH);
 
 		setName("Sakregister");
 		setSize(500, 500);
@@ -49,18 +43,78 @@ public class RegistryView extends JFrame {
 
 	}
 
-	public RegistryController getController() {
+	public void setText(String text) {
 
-		return controller;
+		textArea.setText(text);
 
 	}
 
-	public void update() {
+	private void showValuables() {
 
-		Comparator valuableComparator = eastPanel.getSelectedComparator();
-		String valuables = model.getValuables(valuableComparator);
+		controller.showValuables(sortingPanel.getSelectedComparator());		
 
-		textArea.setText(valuables);
+	}
+
+	class SortingPanel extends JPanel {
+
+		private JRadioButton sortByName;
+
+		public SortingPanel() {
+			
+			setLayout(new BorderLayout());
+
+			JPanel panel = new JPanel();
+			panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+			JLabel sorting = new JLabel("Sorting");
+			panel.add(sorting);
+
+			sortByName = new JRadioButton("Name");
+			panel.add(sortByName);
+			sortByName.addActionListener(event -> showValuables());
+			sortByName.setSelected(true);
+
+			JRadioButton sortByValue = new JRadioButton("Value");
+			panel.add(sortByValue);
+			sortByValue.addActionListener(event -> showValuables());
+
+			ButtonGroup buttonGroup = new ButtonGroup();
+			buttonGroup.add(sortByName);
+			buttonGroup.add(sortByValue);
+
+			add(panel, BorderLayout.SOUTH);
+
+		}
+
+		private Comparator getSelectedComparator() {
+
+			return sortByName.isSelected() ? new NameComparator() : new ValueComparator();
+
+		}
+
+	}
+
+	class ControlPanel extends JPanel {
+
+		public ControlPanel() {
+
+			JLabel newValuable = new JLabel("New:");
+			add(newValuable);
+
+			String[] valuableCategories = {"Jewellry", "Stock", "Apparatus"};
+			JComboBox comboBox = new JComboBox(valuableCategories);
+			comboBox.addActionListener( event -> controller.displayValuableDialog(this, (String) comboBox.getSelectedItem()) );
+			add(comboBox);
+
+			JButton show = new JButton("Show");
+			show.addActionListener(event -> showValuables());
+			add(show);
+
+			JButton crash = new JButton("Stock market crash");
+			crash.addActionListener( event -> controller.setSharePricesToZero(sortingPanel.getSelectedComparator()) );
+			add(crash);
+
+		}
 
 	}
 
