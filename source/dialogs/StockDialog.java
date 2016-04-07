@@ -6,8 +6,8 @@ import javax.swing.*;
 
 public class StockDialog extends ValuableDialog {
 
-	JTextField amountInput;
-	JTextField sharePriceInput;
+	private JTextField amountInput;
+	private JTextField sharePriceInput;
 
 	public StockDialog() {
 

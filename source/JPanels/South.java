@@ -11,7 +11,7 @@ public class South extends JPanel {
 
 		this.parentFrame = parentFrame;
 
-		JLabel newValuable = new JLabel("Nytt:");
+		JLabel newValuable = new JLabel("New:");
 		add(newValuable);
 
 		String[] valuableCategories = {"Jewellry", "Stock", "Apparatus"};
@@ -20,11 +20,11 @@ public class South extends JPanel {
 									parentFrame.getController().displayValuableDialog(this, (String) comboBox.getSelectedItem()));
 		add(comboBox);
 
-		JButton show = new JButton("Visa");
+		JButton show = new JButton("Show");
 		show.addActionListener(event -> parentFrame.getController().showValuables());
 		add(show);
 
-		JButton crash = new JButton("Börskrasch");
+		JButton crash = new JButton("Stock market crash");
 		crash.addActionListener(event -> parentFrame.getController().setSharePricesToZero());
 		add(crash);
 

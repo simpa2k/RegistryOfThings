@@ -7,8 +7,8 @@ import java.awt.event.*;
 
 public class JewellryDialog extends ValuableDialog implements ItemListener {
 	
-	JTextField numberOfGems;
-	boolean goldBoxChecked = false;
+	private JTextField numberOfGems;
+	private boolean goldBoxChecked = false;
 
 	public JewellryDialog() {
 

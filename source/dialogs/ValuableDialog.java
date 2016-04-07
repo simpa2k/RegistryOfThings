@@ -1,8 +1,6 @@
 package dialogs;
 
 import valuables.Valuable;
-
-import java.util.HashMap;
 import javax.swing.*;
 
 public abstract class ValuableDialog extends JPanel {

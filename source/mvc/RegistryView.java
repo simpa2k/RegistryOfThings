@@ -11,12 +11,12 @@ import java.util.Comparator;
 
 public class RegistryView extends JFrame {
 
-	JTextArea textArea;
+	private JTextArea textArea;
 
-	RegistryModel model;
-	RegistryController controller;
+	private RegistryModel model;
+	private RegistryController controller;
 
-	East eastPanel;
+	private East eastPanel;
 
 	public RegistryView() {
 
@@ -61,22 +61,6 @@ public class RegistryView extends JFrame {
 		String valuables = model.getValuables(valuableComparator);
 
 		textArea.setText(valuables);
-
-	}
-
-	public static void main(String[] args) {
-
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-
-			public void run() {
-				
-				RegistryView view = new RegistryView();
-
-				view.setVisible(true);
-
-			}
-
-		});
 
 	}
 

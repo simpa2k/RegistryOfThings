@@ -30,7 +30,7 @@ public abstract class Valuable {
 
 	public String toString() {
 
-		return String.format("%s: %s Värde: %s %s",
+		return String.format("%s: %s Value: %s %s",
 							 getClass().getSimpleName(), 
 							 name, 
 							 calculateValueWithTax(),

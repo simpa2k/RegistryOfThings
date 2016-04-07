@@ -26,9 +26,10 @@ public class Stock extends Valuable {
 
 	}
 
+	@Override
 	protected String getProperties() {
 
-		return String.format("Antal: %s Kurs: %s",
+		return String.format("Amount: %s Shareprice: %s",
 							 amount,
 							 sharePrice);
 

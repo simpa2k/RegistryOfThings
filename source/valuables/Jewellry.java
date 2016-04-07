@@ -24,11 +24,12 @@ public class Jewellry extends Valuable {
 
 	}
 
+	@Override
 	protected String getProperties() {
 
-		String metal = isGold ? "guld" : "silver";
+		String metal = isGold ? "gold" : "silver";
 
-		return String.format("Stenar: %s Material: %s",
+		return String.format("Gems: %s Material: %s",
 							 numberOfGems,
 							 metal);
 

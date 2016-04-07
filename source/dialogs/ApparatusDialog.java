@@ -6,8 +6,8 @@ import javax.swing.*;
 
 public class ApparatusDialog extends ValuableDialog {
 	
-	JTextField purchasePriceInput;
-	JTextField wearInput;
+	private JTextField purchasePriceInput;
+	private JTextField wearInput;
 
 	public ApparatusDialog() {
 

@@ -37,9 +37,10 @@ public class Apparatus extends Valuable {
 
 	}
 
+	@Override
 	protected String getProperties() {
 
-		return String.format("Pris: %s Slitage: %s",
+		return String.format("Price: %s Wear: %s",
 							 purchasePrice,
 							 wear);
 
