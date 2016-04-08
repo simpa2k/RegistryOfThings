@@ -6,7 +6,15 @@ public abstract class Valuable {
 
 	public Valuable(String name) {
 
-		this.name = name;
+		if(name.matches("\\d+") || name.isEmpty()) {
+
+			throw new IllegalArgumentException();
+
+		} else {
+			
+			this.name = name;
+
+		}
 
 	}
 

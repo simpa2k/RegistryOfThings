@@ -27,8 +27,6 @@ public class ApparatusDialog extends ValuableDialog {
 
 	@Override
 	public Apparatus getNewValuable() {
-		
-		validateNameInput();
 
 		double numericPurchasePrice = Double.parseDouble(purchasePriceInput.getText());
 		int numericWear = Integer.parseInt(wearInput.getText());

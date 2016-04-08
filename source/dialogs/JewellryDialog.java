@@ -29,8 +29,6 @@ public class JewellryDialog extends ValuableDialog implements ItemListener {
 
 	@Override
 	public Jewellry getNewValuable() {
-		
-		validateNameInput();
 
 		int numericNumberOfGems = Integer.parseInt(numberOfGems.getText());
 		return new Jewellry(getNameInputText(), numericNumberOfGems, goldBoxChecked);

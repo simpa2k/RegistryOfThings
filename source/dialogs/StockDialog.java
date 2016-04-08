@@ -28,8 +28,6 @@ public class StockDialog extends ValuableDialog {
 
 	@Override
 	public Stock getNewValuable() {
-			
-		validateNameInput();
 
 		int numericAmount = Integer.parseInt(amountInput.getText());
 		double numericSharePrice = Double.parseDouble(sharePriceInput.getText());
