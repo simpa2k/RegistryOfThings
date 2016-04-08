@@ -16,7 +16,7 @@ public class Apparatus extends Valuable {
 
 	private void setWear(int wear) {
 
-		if(wear < 0 || wear > 10) {
+		if(wear < 1 || wear > 10) {
 
 			throw new IllegalArgumentException();
 

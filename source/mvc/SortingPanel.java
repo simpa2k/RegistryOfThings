@@ -1,6 +1,7 @@
 package mvc;
 
 import compare.*;
+import valuables.Valuable;
 
 import java.util.Comparator;
 import javax.swing.*;
@@ -37,7 +38,7 @@ public class SortingPanel extends JPanel {
 
 	}
 
-	protected Comparator getSelectedComparator() {
+	protected Comparator<Valuable> getSelectedComparator() {
 
 		return sortByName.isSelected() ? new NameComparator() : new ValueComparator();
 

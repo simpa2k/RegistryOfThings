@@ -10,7 +10,7 @@ public class ControlPanel extends JPanel {
 		add(newValuable);
 
 		String[] valuableCategories = {"Jewellry", "Stock", "Apparatus"};
-		JComboBox comboBox = new JComboBox(valuableCategories);
+		JComboBox<String> comboBox = new JComboBox<>(valuableCategories);
 		comboBox.addActionListener( event -> parentFrame.displayValuableDialog(this, (String) comboBox.getSelectedItem()) );
 		add(comboBox);
 

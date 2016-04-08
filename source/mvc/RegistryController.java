@@ -75,7 +75,7 @@ public class RegistryController {
 
 	}
 	
-	protected void showValuables(Comparator selectedComparator) {
+	protected void showValuables(Comparator<Valuable> selectedComparator) {
 
 		String valuables = model.getValuables(selectedComparator);
 
@@ -83,7 +83,7 @@ public class RegistryController {
 
 	}
 
-	protected void setSharePricesToZero(Comparator selectedComparator) {
+	protected void setSharePricesToZero(Comparator<Valuable> selectedComparator) {
 
 		model.setSharePricesToZero();
 		showValuables(selectedComparator);

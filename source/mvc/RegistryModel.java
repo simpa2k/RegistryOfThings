@@ -9,15 +9,6 @@ public class RegistryModel {
 
 	private ArrayList<Valuable> valuables = new ArrayList<>();
 
-	public RegistryModel() {
-
-		valuables.add(new Jewellry("Ring", 3, true));
-		valuables.add(new Stock("Alfa Laval", 120, 169.1));
-		valuables.add(new Stock("Ericsson", 100, 1300.0));
-		valuables.add(new Apparatus("TV", 3000.0, 3));
-
-	}
-
 	protected void add(Valuable valuable) {
 
 		valuables.add(valuable);

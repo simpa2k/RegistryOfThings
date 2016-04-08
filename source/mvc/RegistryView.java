@@ -39,6 +39,7 @@ public class RegistryView extends JFrame {
 
 		setName("Sakregister");
 		setSize(500, 500);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 	}
@@ -49,7 +50,7 @@ public class RegistryView extends JFrame {
 
 	}
 
-	protected void showValuables(Comparator comparator) {
+	protected void showValuables(Comparator<Valuable> comparator) {
 
 		controller.showValuables(comparator);		
 
